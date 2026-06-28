@@ -22,6 +22,7 @@ void test_vector(void);
 void test_hash(void);
 void test_file(void);
 void test_edge_cases(void);
+void test_timer(void);
 
 int main(void) {
     printf("=== CoreBrick-C Test Suite ===\n\n");
@@ -56,6 +57,7 @@ TEST("cb_error_string(CB_ERR_INVALID_ARGUMENT) returns non-empty",
     test_hash();
 test_file();
     test_edge_cases();
+test_timer();
 
     printf("\n--- Summary ---\n");
     printf("Total: %d, Passed: %d, Failed: %d\n\n",

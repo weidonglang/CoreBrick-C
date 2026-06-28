@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(corebrick VERSION 0.1.0 LANGUAGES C)
+project(corebrick VERSION 0.2.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -13,6 +13,7 @@ set(CB_SOURCES
     src/cb_vector.c
     src/cb_hash.c
     src/cb_file.c
+    src/cb_timer.c
 )
 
 set(CB_HEADERS
@@ -24,6 +25,7 @@ set(CB_HEADERS
     include/cb_vector.h
     include/cb_hash.h
     include/cb_file.h
+    include/cb_timer.h
 )
 
 # Static library
@@ -45,6 +47,7 @@ add_executable(corebrick_tests
     tests/test_vector.c
     tests/test_hash.c
     tests/test_file.c
+    tests/test_timer.c
     tests/test_edge_cases.c
 )
 target_include_directories(corebrick_tests PRIVATE include)
@@ -70,3 +73,17 @@ target_link_libraries(hash_example PRIVATE corebrick_static)
 
 add_executable(file_example examples/file_example.c)
 target_link_libraries(file_example PRIVATE corebrick_static)
+
+add_executable(timer_example examples/timer_example.c)
+target_link_libraries(timer_example PRIVATE corebrick_static)
+
+# Benchmark
+add_executable(corebrick_bench
+    benchmarks/bench_main.c
+    benchmarks/bench_vector.c
+    benchmarks/bench_hash.c
+    benchmarks/bench_file.c
+    benchmarks/bench_timer.c
+)
+target_include_directories(corebrick_bench PRIVATE include)
+target_link_libraries(corebrick_bench PRIVATE corebrick_static)

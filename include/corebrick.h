@@ -9,4 +9,5 @@
 #include "cb_hash.h"
 #include "cb_file.h"
 
+#include "cb_timer.h"
 #endif /* COREBRICK_H */
