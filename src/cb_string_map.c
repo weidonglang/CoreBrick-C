@@ -6,6 +6,20 @@
 #define DEFAULT_CAPACITY 16
 #define MAX_LOAD_FACTOR 0.7
 
+/* Portable string duplication - no _strdup dependency */
+static char *cb_strdup_local(const char *s) {
+    if (s == NULL) {
+        char *copy = (char *)malloc(1);
+        if (copy) copy[0] = '\0';
+        return copy;
+    }
+    size_t len = strlen(s);
+    char *copy = (char *)malloc(len + 1);
+    if (copy == NULL) return NULL;
+    memcpy(copy, s, len + 1);
+    return copy;
+}
+
 typedef enum {
     ENTRY_EMPTY,
     ENTRY_OCCUPIED,
@@ -35,28 +49,75 @@ static uint32_t hash_key(const char *key) {
     return hash;
 }
 
+/* Internal: insert an already-duplicated key/value into the new table.
+   Does NOT trigger rehash. Takes ownership of key/value on success. */
+static CB_Error insert_into(CB_StringMap *map, Entry *new_entries,
+                            size_t new_capacity, char *key, char *value) {
+    uint32_t hash = hash_key(key);
+    size_t index = hash % new_capacity;
+    for (size_t i = 0; i < new_capacity; i++) {
+        size_t probe = (index + i) % new_capacity;
+        if (new_entries[probe].status == ENTRY_EMPTY ||
+            new_entries[probe].status == ENTRY_DELETED) {
+            new_entries[probe].key = key;
+            new_entries[probe].value = value;
+            new_entries[probe].status = ENTRY_OCCUPIED;
+            map->size++;
+            return CB_OK;
+        }
+    }
+    return CB_ERR_BUFFER_TOO_SMALL;
+}
 static CB_Error rehash(CB_StringMap *map, size_t new_capacity) {
     Entry *old_entries = map->entries;
     size_t old_capacity = map->capacity;
+    size_t old_size = map->size;
+
     Entry *new_entries = (Entry *)calloc(new_capacity, sizeof(Entry));
     if (new_entries == NULL) return CB_ERR_OUT_OF_MEMORY;
+
     map->entries = new_entries;
     map->capacity = new_capacity;
     map->size = 0;
     map->tombstone_count = 0;
+
+    CB_Error err = CB_OK;
+
     for (size_t i = 0; i < old_capacity; i++) {
         if (old_entries[i].status == ENTRY_OCCUPIED) {
-            CB_Error err = cb_string_map_put(map, old_entries[i].key, old_entries[i].value);
+            char *k = old_entries[i].key;
+            char *v = old_entries[i].value;
+            old_entries[i].key = NULL;
+            old_entries[i].value = NULL;
+
+            err = insert_into(map, new_entries, new_capacity, k, v);
             if (err != CB_OK) {
-                map->entries = old_entries;
-                map->capacity = old_capacity;
-                free(new_entries);
-                return err;
+                free(k);
+                free(v);
+                break;
             }
+        }
+    }
+
+    if (err != CB_OK) {
+        for (size_t i = 0; i < new_capacity; i++) {
+            if (new_entries[i].status == ENTRY_OCCUPIED) {
+                free(new_entries[i].key);
+                free(new_entries[i].value);
+            }
+        }
+        for (size_t i = 0; i < old_capacity; i++) {
             free(old_entries[i].key);
             free(old_entries[i].value);
         }
+        free(new_entries);
+        map->entries = old_entries;
+        map->capacity = old_capacity;
+        map->size = old_size;
+        map->tombstone_count = 0;
+        return err;
     }
+
     free(old_entries);
     return CB_OK;
 }
@@ -77,7 +138,6 @@ CB_Error cb_string_map_create(size_t initial_capacity, CB_StringMap **out_map) {
     *out_map = map;
     return CB_OK;
 }
-
 CB_Error cb_string_map_put(CB_StringMap *map, const char *key, const char *value) {
     if (map == NULL || key == NULL) return CB_ERR_INVALID_ARGUMENT;
     if ((double)(map->size + map->tombstone_count) / (double)map->capacity >= MAX_LOAD_FACTOR) {
@@ -94,9 +154,9 @@ CB_Error cb_string_map_put(CB_StringMap *map, const char *key, const char *value
                 probe = first_deleted;
                 map->tombstone_count--;
             }
-            map->entries[probe].key = _strdup(key);
+            map->entries[probe].key = cb_strdup_local(key);
             if (map->entries[probe].key == NULL) return CB_ERR_OUT_OF_MEMORY;
-            map->entries[probe].value = (value != NULL) ? _strdup(value) : _strdup("");
+            map->entries[probe].value = cb_strdup_local(value);
             if (map->entries[probe].value == NULL) {
                 free(map->entries[probe].key);
                 return CB_ERR_OUT_OF_MEMORY;
@@ -107,7 +167,7 @@ CB_Error cb_string_map_put(CB_StringMap *map, const char *key, const char *value
         } else if (map->entries[probe].status == ENTRY_DELETED) {
             if (first_deleted == map->capacity) first_deleted = probe;
         } else if (strcmp(map->entries[probe].key, key) == 0) {
-            char *nv = (value != NULL) ? _strdup(value) : _strdup("");
+            char *nv = cb_strdup_local(value);
             if (nv == NULL) return CB_ERR_OUT_OF_MEMORY;
             free(map->entries[probe].value);
             map->entries[probe].value = nv;
@@ -153,7 +213,6 @@ CB_Error cb_string_map_contains(const CB_StringMap *map, const char *key, int *o
             return CB_OK;
         }
     }
-    *out_contains = 0;
     return CB_OK;
 }
 
