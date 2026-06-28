@@ -1,5 +1,23 @@
 # Release Notes
 
+## v0.3.2
+
+### Reliability Fix
+
+This patch release fixes one remaining overflow issue from the v0.3.1 audit:
+
+#### Timer (Windows)
+- Fixed Windows QPC multiplication overflow in `cb_timer_now_ns()`: changed from `(now.QuadPart * 1e9) / freq.QuadPart` to divide-first-then-multiply pattern, preventing overflow on long-running systems
+
+### Known Limitations
+
+- No SIMD optimizations
+- No thread-safe variants
+- No language bindings
+- No JSON parser
+- No lock-free queue
+- Bloom Filter has false positives (documented)
+
 ## v0.3.1
 
 ### Reliability Fixes

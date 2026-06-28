@@ -5,6 +5,10 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 ## Features
 
 ### v0.2.0 Modules
+### v0.3.2 Reliability Patch
+- Timer Windows QPC overflow fixed (divide-first-then-multiply pattern)
+- See [Release Notes](./docs/release_notes.md) for details
+
 ### v0.3.1 Reliability Patch
 - 15 reliability fixes across all modules
   - StringMap: portable strdup, rehash safety

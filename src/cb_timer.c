@@ -16,7 +16,11 @@ uint64_t cb_timer_now_ns(void) {
     LARGE_INTEGER now;
     QueryPerformanceCounter(&now);
 
-    return (uint64_t)((now.QuadPart * 1000000000ULL) / freq.QuadPart);
+    /* Safe computation: divide first to avoid overflow for long-running systems.
+       Equivalent to (now.QuadPart * 1e9) / freq.QuadPart but without overflow risk */
+    uint64_t whole = (uint64_t)(now.QuadPart / freq.QuadPart);
+    uint64_t rem  = (uint64_t)(now.QuadPart % freq.QuadPart);
+    return whole * 1000000000ULL + (rem * 1000000000ULL) / (uint64_t)freq.QuadPart;
 }
 
 #elif defined(__linux__) || defined(__unix__) || defined(__APPLE__)
