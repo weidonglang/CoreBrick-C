@@ -7,6 +7,7 @@
 - [ByteBuffer](./buffer.md) - Dynamic byte buffer
 - [StringView](./string_view.md) - Zero-copy string slice
 - [Vector](./vector.md) - Generic dynamic array
+- [Hash](./hash.md) - Non-cryptographic hash utilities
 
 ## Error Codes
 
@@ -70,3 +71,7 @@ CB_Error   cb_vector_pop(CB_Vector *vec, void *out_element);
 void       cb_vector_clear(CB_Vector *vec);
 void       cb_vector_free(CB_Vector *vec);
 ```
+// Hash
+uint64_t   cb_hash_fnv1a64(const void *data, size_t len);
+uint32_t   cb_hash_fnv1a32(const void *data, size_t len);
+uint32_t   cb_crc32(const void *data, size_t len);
