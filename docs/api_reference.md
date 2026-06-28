@@ -1,0 +1,61 @@
+# CoreBrick-C API Reference
+
+## Modules
+
+- [Error Codes](./cb_error.h) - CB_Error enum and error string conversion
+- [Arena Allocator](./arena.md) - Linear memory allocator
+- [ByteBuffer](./buffer.md) - Dynamic byte buffer
+- [StringView](./string_view.md) - Zero-copy string slice
+
+## Error Codes
+
+| Code | Description |
+|---|---|
+| `CB_OK` | Success |
+| `CB_ERR_INVALID_ARGUMENT` | Invalid argument |
+| `CB_ERR_OUT_OF_MEMORY` | Memory allocation failure |
+| `CB_ERR_BUFFER_TOO_SMALL` | Buffer capacity insufficient |
+| `CB_ERR_INDEX_OUT_OF_BOUNDS` | Index out of bounds |
+| `CB_ERR_PARSE` | Parse error |
+| `CB_ERR_IO` | I/O error |
+| `CB_ERR_INTERNAL` | Internal error |
+
+## Full API
+
+```c
+// Error
+const char *cb_error_string(CB_Error err);
+
+// Arena
+CB_Error   cb_arena_create(size_t capacity, CB_Arena **out_arena);
+void      *cb_arena_alloc(CB_Arena *arena, size_t size);
+void      *cb_arena_alloc_zero(CB_Arena *arena, size_t size);
+CB_Error   cb_arena_reset(CB_Arena *arena);
+size_t     cb_arena_used(const CB_Arena *arena);
+size_t     cb_arena_capacity(const CB_Arena *arena);
+void       cb_arena_destroy(CB_Arena *arena);
+
+// Buffer
+CB_Error   cb_buffer_init(CB_Buffer *buffer, size_t initial_capacity);
+CB_Error   cb_buffer_reserve(CB_Buffer *buffer, size_t new_capacity);
+CB_Error   cb_buffer_append(CB_Buffer *buffer, const void *data, size_t len);
+CB_Error   cb_buffer_append_u8(CB_Buffer *buffer, uint8_t value);
+CB_Error   cb_buffer_append_u32_le(CB_Buffer *buffer, uint32_t value);
+CB_Error   cb_buffer_append_cstr(CB_Buffer *buffer, const char *text);
+void       cb_buffer_clear(CB_Buffer *buffer);
+void       cb_buffer_free(CB_Buffer *buffer);
+
+// StringView
+CB_StringView cb_sv_from_parts(const char *data, size_t len);
+CB_StringView cb_sv_from_cstr(const char *text);
+int           cb_sv_is_empty(CB_StringView sv);
+CB_StringView cb_sv_trim_ascii(CB_StringView sv);
+int           cb_sv_starts_with(CB_StringView sv, CB_StringView prefix);
+int           cb_sv_ends_with(CB_StringView sv, CB_StringView suffix);
+int           cb_sv_equals(CB_StringView a, CB_StringView b);
+int           cb_sv_find(CB_StringView sv, CB_StringView needle, size_t *out_pos);
+CB_Error      cb_sv_to_i64(CB_StringView sv, int64_t *out_value);
+CB_Error      cb_sv_to_f64(CB_StringView sv, double *out_value);
+CB_SplitIter  cb_sv_split(CB_StringView input, char delimiter);
+int           cb_sv_split_next(CB_SplitIter *iter, CB_StringView *out_part);
+```

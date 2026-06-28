@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake -S . -B build ${{ matrix.os == 'windows-latest' && '-A x64' || '' }}
+
+    - name: Build
+      run: cmake --build build
+
+    - name: Test
+      run: ctest --test-dir build --output-on-failure
+
+    - name: Windows Scripts
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
+      run: |
+        ./scripts/check_version.ps1
+        ./scripts/check_no_artifacts.ps1
+        ./scripts/smoke_test.ps1
