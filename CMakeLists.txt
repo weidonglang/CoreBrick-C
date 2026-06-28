@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(corebrick VERSION 0.3.0 LANGUAGES C)
+project(corebrick VERSION 0.3.1 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -46,7 +46,6 @@ target_link_libraries(cbcli PRIVATE corebrick_static)
 
 # Tests
 enable_testing()
-
 add_executable(corebrick_tests
     tests/test_main.c
     tests/test_arena.c
@@ -64,7 +63,6 @@ add_executable(corebrick_tests
 )
 target_include_directories(corebrick_tests PRIVATE include)
 target_link_libraries(corebrick_tests PRIVATE corebrick_static)
-
 add_test(NAME corebrick_tests COMMAND corebrick_tests)
 
 # Examples
@@ -96,11 +94,10 @@ add_executable(ring_example examples/ring_example.c)
 target_link_libraries(ring_example PRIVATE corebrick_static)
 
 add_executable(bloom_example examples/bloom_example.c)
+target_link_libraries(bloom_example PRIVATE corebrick_static)
+
 add_executable(string_map_example examples/string_map_example.c)
 target_link_libraries(string_map_example PRIVATE corebrick_static)
-
-
-target_link_libraries(bloom_example PRIVATE corebrick_static)
 
 # Benchmark
 add_executable(corebrick_bench
