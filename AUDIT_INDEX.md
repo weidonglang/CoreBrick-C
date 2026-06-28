@@ -4,18 +4,28 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.1.0
-- Latest tag: v0.1.0
+- Latest release: v0.2.0
+- Latest tag: v0.2.0
 
-## Task Traceability
+## v0.1.0 Task Traceability
 
-| Task | Module | Issue | Commit | Main Files | Tests | Docs | Status |
+| Task | Module | Commit | Main Files | Tests | Docs | Status |
+|---|---|---|---|---|---|---|
+| Task 0 | Bootstrap | 5fd5b89 | CMakeLists.txt, README.md | tests/test_main.c | docs/architecture.md | PASS |
+| Task 1 | Arena | 5fd5b89 | include/cb_arena.h, src/cb_arena.c | tests/test_arena.c | docs/arena.md | PASS |
+| Task 2 | ByteBuffer | 5fd5b89 | include/cb_buffer.h, src/cb_buffer.c | tests/test_buffer.c | docs/buffer.md | PASS |
+| Task 3 | StringView | 5fd5b89 | include/cb_string_view.h, src/cb_string_view.c | tests/test_string_view.c | docs/string_view.md | PASS |
+| Task 4 | Release | 5fd5b89 | README.md, docs/review_report_v0.1.0.md | smoke_test.ps1 | docs/release_notes.md | PASS |
+
+## v0.2.0 Task Traceability
+
+| Task | Module | Branch | Commit | Main Files | Tests | Docs | Status |
 |---|---|---|---|---|---|---|---|
-| Task 0 | Bootstrap | — | f8a5221 | CMakeLists.txt, README.md | tests/test_main.c | docs/architecture.md | PASS |
-| Task 1 | Arena | — | f8a5221 | include/cb_arena.h, src/cb_arena.c | tests/test_arena.c | docs/arena.md | PASS |
-| Task 2 | ByteBuffer | — | f8a5221 | include/cb_buffer.h, src/cb_buffer.c | tests/test_buffer.c | docs/buffer.md | PASS |
-| Task 3 | StringView | — | f8a5221 | include/cb_string_view.h, src/cb_string_view.c | tests/test_string_view.c | docs/string_view.md | PASS |
-| Task 4 | Release | — | f8a5221 | README.md, docs/review_report_v0.1.0.md | smoke_test.ps1 | docs/release_notes.md | PASS |
+| Task 1 | Vector | task-1-vector | f8215ee | include/cb_vector.h, src/cb_vector.c | tests/test_vector.c | docs/vector.md | PASS |
+| Task 2 | Hash | task-2-hash | 16555ab | include/cb_hash.h, src/cb_hash.c | tests/test_hash.c | docs/hash.md | PASS |
+| Task 3 | FileUtils | task-3-file-utils | 19bf3d2 | include/cb_file.h, src/cb_file.c | tests/test_file.c | docs/file.md | PASS |
+| Task 4 | Timer/Benchmark | task-4-timer-benchmark | e29c7a2 | include/cb_timer.h, src/cb_timer.c | tests/test_timer.c | docs/timer.md | PASS |
+| Task 5 | Release | task-5-release-v0.2.0 |  | README.md, docs/review_report_v0.2.0.md | smoke_test.ps1 | docs/release_notes.md | IN PROGRESS |
 
 ## Validation Commands
 
@@ -28,23 +38,13 @@ powershell -ExecutionPolicy Bypass -File scripts/check_no_artifacts.ps1
 powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ```
 
-## v0.2.0 Task Traceability
-
-| Task | Module | Issue | Branch | Commit | Main Files | Tests | Docs | Status |
-|---|---|---|---|---|---|---|---|---|
-| Task 1 | Vector | — | task-1-vector |  | include/cb_vector.h, src/cb_vector.c | tests/test_vector.c | docs/vector.md | IN PROGRESS |
-| Task 2 | Hash | — | task-2-hash |  | include/cb_hash.h, src/cb_hash.c | tests/test_hash.c | docs/hash.md | PENDING |
-| Task 3 | FileUtils | — | task-3-file-utils |  | include/cb_file.h, src/cb_file.c | tests/test_file.c | docs/file.md | PENDING |
-| Task 4 | Timer/Benchmark | — | task-4-timer-benchmark |  | include/cb_timer.h, src/cb_timer.c | tests/test_timer.c | docs/timer.md | PENDING |
-| Task 5 | Release | — | task-5-release-v0.2.0 |  | README.md, docs/review_report_v0.2.0.md | smoke_test.ps1 | docs/release_notes.md | PENDING |
-
 ## Known Limitations
 
-- v0.1.0 was delivered as a consolidated initial release. Future versions will strictly enforce one issue, one branch, one commit, and one pull request per module.
-- Only Arena, ByteBuffer, and StringView are included.
-- No HashMap, Bloom Filter, RingBuffer, FileUtils, Timer, or language bindings yet.
+- v0.1.0 was delivered as a consolidated initial release. v0.2.0 strictly enforces one issue, one branch, one commit, and one pull request per module.
+- No HashMap, Bloom Filter, RingBuffer, or JSON Parser yet.
+- No language bindings.
 
 ## Release
 
-* Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.1.0
-* Release asset: CoreBrick-C-v0.1.0.zip
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.2.0
+- Release asset: CoreBrick-C-v0.2.0.zip

@@ -9,6 +9,8 @@
 - [Vector](./vector.md) - Generic dynamic array
 - [Hash](./hash.md) - Non-cryptographic hash utilities
 - [File](./file.md) - File utilities
+- [File](./file.md) - File utilities
+- [Timer](./timer.md) - High-resolution timer
 
 ## Error Codes
 
