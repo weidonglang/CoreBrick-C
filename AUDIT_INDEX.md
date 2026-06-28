@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.3.2
-- Latest tag: v0.3.2
+- Latest release: v0.3.3
+- Latest tag: v0.3.3
 
 ## v0.1.0 Task Traceability
 
@@ -68,6 +68,13 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | Task 1 | Timer Windows overflow fix | #25 | #26 | task-1-fix-timer-overflow | 7710219 | MERGED |
 | Task 2 | Release v0.3.2 | #27 | #28 | task-6-release-v0.3.2 | f22466c | MERGED |
 
+## v0.3.3 Task Traceability
+
+| Task | Scope | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| Task 1 | Restore tests and version scripts | #27 | #28 | task-1-restore-ci-scripts | 9262984 | MERGED |
+| Task 2 | Release v0.3.3 | #29 | | task-2-release-v0.3.3 | | PENDING |
+
 ## Known Limitations
 
 - v0.1.0 was delivered as a consolidated initial release.
@@ -88,3 +95,8 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 - Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.2
 - Release asset: CoreBrick-C-v0.3.2.zip
+
+## Release (v0.3.3)
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.3
+- Release asset: CoreBrick-C-v0.3.3.zip

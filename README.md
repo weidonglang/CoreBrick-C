@@ -5,8 +5,9 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 ## Features
 
 ### v0.2.0 Modules
-### v0.3.2 Reliability Patch
-- Timer Windows QPC overflow fixed (divide-first-then-multiply pattern)
+### v0.3.3 Reliability Patch
+- Restored version scripts and edge case tests
+- Fixed CI Windows ctest configuration
 - See [Release Notes](./docs/release_notes.md) for details
 
 ### v0.3.1 Reliability Patch
