@@ -25,7 +25,7 @@
 | Task 2 | Hash | task-2-hash | 16555ab | include/cb_hash.h, src/cb_hash.c | tests/test_hash.c | docs/hash.md | PASS |
 | Task 3 | FileUtils | task-3-file-utils | 19bf3d2 | include/cb_file.h, src/cb_file.c | tests/test_file.c | docs/file.md | PASS |
 | Task 4 | Timer/Benchmark | task-4-timer-benchmark | e29c7a2 | include/cb_timer.h, src/cb_timer.c | tests/test_timer.c | docs/timer.md | PASS |
-| Task 5 | Release | task-5-release-v0.2.0 |  | README.md, docs/review_report_v0.2.0.md | smoke_test.ps1 | docs/release_notes.md | IN PROGRESS |
+| Task 5 | Release | task-5-release-v0.2.0 | c602213 | README.md, docs/review_report_v0.2.0.md | smoke_test.ps1 | docs/release_notes.md | PASS |
 
 ## Validation Commands
 
@@ -40,7 +40,8 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 ## Known Limitations
 
-- v0.1.0 was delivered as a consolidated initial release. v0.2.0 strictly enforces one issue, one branch, one commit, and one pull request per module.
+- v0.1.0 was delivered as a consolidated initial release.
+- v0.2.0 used separate branches and commits per module, but GitHub pull requests were not created or are not available for audit.
 - No HashMap, Bloom Filter, RingBuffer, or JSON Parser yet.
 - No language bindings.
 

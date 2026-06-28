@@ -46,7 +46,7 @@
 | Task 2 | Hash | task-2-hash | 16555ab |
 | Task 3 | FileUtils | task-3-file-utils | 19bf3d2 |
 | Task 4 | Timer / Benchmark | task-4-timer-benchmark | e29c7a2 |
-| Task 5 | Release | task-5-release-v0.2.0 |  |
+| Task 5 | Release | task-5-release-v0.2.0 | c602213 |
 
 ## Artifact Check
 
@@ -61,9 +61,20 @@
 - .vscode/ not committed: YES (in .gitignore)
 - .idea/ not committed: YES (in .gitignore)
 
+## GitHub Actions
+
+- Windows: PASS (manual verification, no CI run URL available)
+- Ubuntu: not run (CI configuration present in .github/workflows/ci.yml but requires GitHub Actions infrastructure)
+
+## Release
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.2.0
+- Release asset: CoreBrick-C-v0.2.0.zip
+
 ## Known Limitations
 
-- v0.1.0 was delivered as a consolidated initial release. v0.2.0 strictly enforces one issue, one branch, one commit, and one pull request per module.
+- v0.1.0 was delivered as a consolidated initial release.
+- v0.2.0 used separate branches and commits per module, but GitHub pull requests were not created or are not available for audit.
 - No HashMap, Bloom Filter, RingBuffer, or JSON Parser yet.
 - No language bindings.
 - No SIMD optimizations.
