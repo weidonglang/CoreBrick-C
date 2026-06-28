@@ -12,3 +12,4 @@
 #include "cb_timer.h"
 #include "cb_bitset.h"
 #endif /* COREBRICK_H */
+#include "cb_ring.h"
