@@ -13,3 +13,4 @@
 #include "cb_bitset.h"
 #endif /* COREBRICK_H */
 #include "cb_ring.h"
+#include "cb_bloom.h"

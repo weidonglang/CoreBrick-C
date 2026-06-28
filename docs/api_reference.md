@@ -15,6 +15,7 @@
 - [BitSet](./bitset.md) - Fixed-size bit array
 - [RingBuffer](./ring.md) - Fixed-capacity FIFO ring buffer
 
+- [Bloom Filter](./bloom.md) - Probabilistic set membership filter
 ## Error Codes
 
 | Code | Description |
