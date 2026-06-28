@@ -21,7 +21,7 @@ For v0.3.0, each task was delivered through a strict Issue → Branch → Commit
 | Task 2: RingBuffer | #5 | #6 | Merged |
 | Task 3: Bloom Filter | #7 | #8 | Merged |
 | Task 4: StringMap | #9 | #11 | Merged |
-| Task 5: Release | #12 | | Merged |
+| Task 5: Release | #12 | #13 | Merged |
 
 ## Build Verification
 
@@ -34,8 +34,13 @@ For v0.3.0, each task was delivered through a strict Issue → Branch → Commit
 ## Release Asset
 
 - Archive: CoreBrick-C-v0.3.0.zip
+- Asset size: 26,289 bytes
 - Contents: include/, docs/, examples/, README.md, LICENSE, VERSION
 - Excludes: build/, dist/, *.exe, *.dll, *.lib, *.obj, *.pdb
+
+## Release
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.0
 
 ## Known Limitations
 
