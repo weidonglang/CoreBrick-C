@@ -30,5 +30,5 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 ## Release
 
-* Release URL:
-* Release asset:
+* Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.1.0
+* Release asset: CoreBrick-C-v0.1.0.zip
