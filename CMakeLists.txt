@@ -16,6 +16,7 @@ set(CB_SOURCES
     src/cb_timer.c
     src/cb_bitset.c
     src/cb_ring.c
+    src/cb_bloom.c
 )
 
 set(CB_HEADERS
@@ -30,6 +31,7 @@ set(CB_HEADERS
     include/cb_timer.h
     include/cb_bitset.h
     include/cb_ring.h
+    include/cb_bloom.h
 )
 
 # Static library
@@ -54,6 +56,7 @@ add_executable(corebrick_tests
     tests/test_timer.c
     tests/test_bitset.c
     tests/test_ring.c
+    tests/test_bloom.c
     tests/test_edge_cases.c
 )
 target_include_directories(corebrick_tests PRIVATE include)
@@ -88,6 +91,9 @@ target_link_libraries(bitset_example PRIVATE corebrick_static)
 
 add_executable(ring_example examples/ring_example.c)
 target_link_libraries(ring_example PRIVATE corebrick_static)
+
+add_executable(bloom_example examples/bloom_example.c)
+target_link_libraries(bloom_example PRIVATE corebrick_static)
 
 # Benchmark
 add_executable(corebrick_bench

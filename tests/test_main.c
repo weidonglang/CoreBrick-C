@@ -27,6 +27,7 @@ void test_ring(void);
 void test_edge_cases(void);
 
 int main(void) {
+void test_bloom(void);
     printf("=== CoreBrick-C Test Suite ===\n\n");
     printf("--- Error Module ---\n");
     TEST("cb_error_string(CB_OK) returns non-empty",
@@ -63,6 +64,7 @@ int main(void) {
     test_ring();
     test_edge_cases();
 
+test_bloom();
     printf("\n--- Summary ---\n");
     printf("Total: %d, Passed: %d, Failed: %d\n\n",
            tests_passed + tests_failed, tests_passed, tests_failed);
