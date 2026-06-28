@@ -1,5 +1,26 @@
 # Release Notes
 
+## v0.3.3
+
+### Reliability & CI Fix
+
+This patch release restores CI scripts and edge case tests:
+
+#### CI & Scripts
+- Restored `check_version.ps1` with proper VERSION file validation (0.3.2 -> 0.3.3)
+- Restored `smoke_test.ps1` with updated test name and full validation
+- Restored `test_edge_cases.c` with edge case tests for all modules
+- Fixed CI Windows `ctest` configuration by adding `-C Debug` flag
+
+#### Known Limitations
+
+- No SIMD optimizations
+- No thread-safe variants
+- No language bindings
+- No JSON parser
+- No lock-free queue
+- Bloom Filter has false positives (documented)
+
 ## v0.3.2
 
 ### Reliability Fix
