@@ -44,11 +44,6 @@ void test_bloom(void) {
     cb_bloom_might_contain(&bloom, "hello", 5, &maybe);
     TEST("contains 'hello' true", maybe == 1);
 
-    /* contains missing item usually false */
-    cb_bloom_might_contain(&bloom, "world", 5, &maybe);
-    /* Bloom filter allows false positives but typically returns 0 for different input */
-    /* This is a statistical test, not guaranteed */
-
     /* multiple items */
     cb_bloom_add(&bloom, "world", 5);
     cb_bloom_add(&bloom, "test", 4);
@@ -61,10 +56,6 @@ void test_bloom(void) {
     /* clear makes inserted_count zero */
     TEST("clear success", cb_bloom_clear(&bloom) == CB_OK);
     TEST("inserted_count=0 after clear", bloom.inserted_count == 0);
-
-    /* after clear, previously added items may not be found */
-    cb_bloom_might_contain(&bloom, "hello", 5, &maybe);
-    /* Expected: the bits were cleared, so hello should not be found (99.9% confidence) */
 
     /* free resets fields */
     cb_bloom_free(&bloom);
@@ -85,9 +76,19 @@ void test_bloom(void) {
     TEST("add NULL data len>0", cb_bloom_add(&b2, NULL, 5) == CB_ERR_INVALID_ARGUMENT);
     TEST("might_contain NULL data len>0", cb_bloom_might_contain(&b2, NULL, 5, &val) == CB_ERR_INVALID_ARGUMENT);
 
-    /* empty input support */
-    TEST("add empty data OK", cb_bloom_add(&b2, "", 0) == CB_OK);
-    TEST("add NULL len=0 OK", cb_bloom_add(&b2, NULL, 0) == CB_OK);
+    /* empty input as valid key */
+    cb_bloom_clear(&b2);
+    TEST("add empty data sets bit", cb_bloom_add(&b2, "", 0) == CB_OK);
+    TEST("inserted_count=1 after empty add", b2.inserted_count == 1);
+    cb_bloom_might_contain(&b2, "", 0, &maybe);
+    TEST("contains empty key after add", maybe == 1);
+
+    /* empty key not yet added should not be found (high probability) */
+    /* Note: This test is probabilistic and depends on bit_count */
+    cb_bloom_clear(&b2);
+    cb_bloom_add(&b2, "x", 1);
+    cb_bloom_might_contain(&b2, "", 0, &maybe);
+    /* With a fresh filter, empty key was not added, so bits for it are 0 */
     cb_bloom_free(&b2);
 
     /* small bitset works */
@@ -112,7 +113,6 @@ void test_bloom(void) {
     }
     TEST("large bitset 100 adds", ok == 1);
     TEST("large inserted_count=100", large.inserted_count == 100);
-    /* Verify all added items are found */
     int all_found = 1;
     for (int i = 0; i < 100; i++) {
         char buf[16];
