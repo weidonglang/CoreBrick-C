@@ -9,14 +9,14 @@
 - [Vector](./vector.md) - Generic dynamic array
 - [Hash](./hash.md) - Non-cryptographic hash utilities
 - [File](./file.md) - File utilities
-- [File](./file.md) - File utilities
-- [Timer](./timer.md) - High-resolution timer
 - [Timer](./timer.md) - High-resolution timer
 - [BitSet](./bitset.md) - Fixed-size bit array
 - [RingBuffer](./ring.md) - Fixed-capacity FIFO ring buffer
 
 - [Bloom Filter](./bloom.md) - Probabilistic set membership filter
 - [StringMap](./string_map.md) - String-to-string hash table
+- [Version Header](./corebrick_version.h) - Version macros
+- [API Policy](./api_policy.md) - API/ABI stability policy
 ## Error Codes
 
 | Code | Description |

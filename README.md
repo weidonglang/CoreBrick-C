@@ -4,7 +4,14 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 
 ## Features
 
-### v0.2.0 Modules
+### v0.4.0 CMake Install & API Policy
+
+- **Version Header** — `corebrick_version.h` for compile-time version checking
+- **API Policy** — documented [API/ABI stability policy](./docs/api_policy.md)
+- **CMake Install** — `cmake --install` support with `find_package` config
+- **Install Guide** — [docs/install.md](./docs/install.md)
+- See [Release Notes](./docs/release_notes.md) for details
+
 ### v0.3.3 Reliability Patch
 - Restored version scripts and edge case tests
 - Fixed CI Windows ctest configuration
@@ -21,7 +28,6 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
   - CRC32: static const table, thread-safe
   - CMake: examples cleanup
 - See [Release Notes](./docs/release_notes.md) for details
-
 
 ### v0.3.0 Modules
 - **BitSet** - Fixed-size bit array for state flags
