@@ -8,10 +8,10 @@
 
 ## Task Completion Summary
 
-| Task | Issue | PR | Branch | Status |
-|---|---|---|---|---|
-| Task 1: Restore tests and version scripts | #27 | #28 | task-1-restore-ci-scripts | MERGED |
-| Task 2: Release v0.3.3 | #29 | | task-2-release-v0.3.3 | PENDING |
+| Task | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|
+| Task 1: Restore tests and version scripts | #27 | #28 | task-1-restore-ci-scripts | 9262984 | MERGED |
+| Task 2: Release v0.3.3 | #29 | #30 | task-2-release-v0.3.3 | d52d21b | MERGED |
 
 ## Changes Applied
 
