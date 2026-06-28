@@ -73,7 +73,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | Task | Scope | Issue | PR | Branch | Commit | Status |
 |---|---|---|---|---|---|---|
 | Task 1 | Restore tests and version scripts | #27 | #28 | task-1-restore-ci-scripts | 9262984 | MERGED |
-| Task 2 | Release v0.3.3 | #29 | | task-2-release-v0.3.3 | | PENDING |
+| Task 2 | Release v0.3.3 | #29 | #30 | task-2-release-v0.3.3 | d52d21b | MERGED |
 
 ## Known Limitations
 
