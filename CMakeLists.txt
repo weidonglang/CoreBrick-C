@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(corebrick VERSION 0.2.0 LANGUAGES C)
+project(corebrick VERSION 0.3.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -14,6 +14,7 @@ set(CB_SOURCES
     src/cb_hash.c
     src/cb_file.c
     src/cb_timer.c
+    src/cb_bitset.c
 )
 
 set(CB_HEADERS
@@ -26,6 +27,7 @@ set(CB_HEADERS
     include/cb_hash.h
     include/cb_file.h
     include/cb_timer.h
+    include/cb_bitset.h
 )
 
 # Static library
@@ -48,6 +50,7 @@ add_executable(corebrick_tests
     tests/test_hash.c
     tests/test_file.c
     tests/test_timer.c
+    tests/test_bitset.c
     tests/test_edge_cases.c
 )
 target_include_directories(corebrick_tests PRIVATE include)
@@ -76,6 +79,9 @@ target_link_libraries(file_example PRIVATE corebrick_static)
 
 add_executable(timer_example examples/timer_example.c)
 target_link_libraries(timer_example PRIVATE corebrick_static)
+
+add_executable(bitset_example examples/bitset_example.c)
+target_link_libraries(bitset_example PRIVATE corebrick_static)
 
 # Benchmark
 add_executable(corebrick_bench
