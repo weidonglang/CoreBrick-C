@@ -20,6 +20,10 @@ build\Debug\corebrick_tests.exe
 - `test_arena.c` - Arena allocator tests
 - `test_buffer.c` - Byte buffer tests
 - `test_string_view.c` - String view tests
+- `test_bitset.c` - BitSet tests
+- `test_ring.c` - RingBuffer tests
+- `test_bloom.c` - Bloom Filter tests
+- `test_string_map.c` - StringMap tests
 - `test_edge_cases.c` - Edge case and cross-module tests
 
 ## Adding Tests
