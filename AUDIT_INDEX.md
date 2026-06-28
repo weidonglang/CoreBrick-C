@@ -28,6 +28,16 @@ powershell -ExecutionPolicy Bypass -File scripts/check_no_artifacts.ps1
 powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ```
 
+## v0.2.0 Task Traceability
+
+| Task | Module | Issue | Branch | Commit | Main Files | Tests | Docs | Status |
+|---|---|---|---|---|---|---|---|---|
+| Task 1 | Vector | — | task-1-vector |  | include/cb_vector.h, src/cb_vector.c | tests/test_vector.c | docs/vector.md | IN PROGRESS |
+| Task 2 | Hash | — | task-2-hash |  | include/cb_hash.h, src/cb_hash.c | tests/test_hash.c | docs/hash.md | PENDING |
+| Task 3 | FileUtils | — | task-3-file-utils |  | include/cb_file.h, src/cb_file.c | tests/test_file.c | docs/file.md | PENDING |
+| Task 4 | Timer/Benchmark | — | task-4-timer-benchmark |  | include/cb_timer.h, src/cb_timer.c | tests/test_timer.c | docs/timer.md | PENDING |
+| Task 5 | Release | — | task-5-release-v0.2.0 |  | README.md, docs/review_report_v0.2.0.md | smoke_test.ps1 | docs/release_notes.md | PENDING |
+
 ## Known Limitations
 
 - v0.1.0 was delivered as a consolidated initial release. Future versions will strictly enforce one issue, one branch, one commit, and one pull request per module.

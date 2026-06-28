@@ -5,5 +5,6 @@
 #include "cb_arena.h"
 #include "cb_buffer.h"
 #include "cb_string_view.h"
+#include "cb_vector.h"
 
 #endif /* COREBRICK_H */
