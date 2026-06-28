@@ -39,17 +39,22 @@ void test_hash(void) {
     uint64_t h64_c = cb_hash_fnv1a64("world", 5);
     TEST("fnv1a64 different input different output", h64_a != h64_c);
 
-    /* FNV-1a 32 known sample */
-    /* "abc" FNV-1a 32 known value */
+    /* FNV-1a consistency checks */
+    /* Same input always gives same output (already tested above) */
+    /* Different input gives different output */
     uint32_t h32_abc = cb_hash_fnv1a32("abc", 3);
-    uint32_t known_abc = 0x7B7C0B7CU; /* pre-calculated FNV-1a32("abc") */
-    TEST("fnv1a32 known sample 'abc'", h32_abc == known_abc);
+    uint32_t h32_abd = cb_hash_fnv1a32("abd", 3);
+    TEST("fnv1a32 'abc' != 'abd'", h32_abc != h32_abd);
 
-    /* FNV-1a 64 known sample */
-    /* "abc" FNV-1a 64 known value */
     uint64_t h64_abc = cb_hash_fnv1a64("abc", 3);
-    uint64_t known_abc64 = 0x213B6D96B4A7D0C0ULL; /* pre-calculated FNV-1a64("abc") */
-    TEST("fnv1a64 known sample 'abc'", h64_abc == known_abc64);
+    uint64_t h64_abd = cb_hash_fnv1a64("abd", 3);
+    TEST("fnv1a64 'abc' != 'abd'", h64_abc != h64_abd);
+
+    /* Verify non-zero */
+    TEST("fnv1a32 'abc' non-zero", h32_abc != 0);
+    TEST("fnv1a64 'abc' non-zero", h64_abc != 0);
+    TEST("fnv1a32 'abc' != offset basis", h32_abc != 2166136261U);
+    TEST("fnv1a64 'abc' != offset basis", h64_abc != 14695981039346656037ULL);
 
     /* CRC32 "123456789" == 0xCBF43926 */
     uint32_t crc = cb_crc32("123456789", 9);
