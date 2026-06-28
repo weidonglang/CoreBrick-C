@@ -10,13 +10,24 @@ if (Test-Path $vsCmake) { $cmakePath = $vsCmake }
 
 Write-Host "=== Smoke Test ===" -ForegroundColor Cyan
 
-# 1. Verify VERSION
+# 1. Verify VERSION is non-empty and matches CMakeLists.txt
 $version = (Get-Content "VERSION" -Raw).Trim()
-if ($version -ne "0.3.1") {
-    Write-Host "FAIL: VERSION mismatch" -ForegroundColor Red
+if ([string]::IsNullOrEmpty($version)) {
+    Write-Host "FAIL: VERSION is empty" -ForegroundColor Red
     exit 1
 }
-Write-Host "PASS: VERSION = $version" -ForegroundColor Green
+$cmakeContent = Get-Content "CMakeLists.txt" -Raw
+$match = [regex]::Match($cmakeContent, 'project\s*\(\s*corebrick\s+VERSION\s+(\d+\.\d+\.\d+)', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+if (-not $match.Success) {
+    Write-Host "FAIL: could not parse VERSION from CMakeLists.txt" -ForegroundColor Red
+    exit 1
+}
+$cmakeVersion = $match.Groups[1].Value
+if ($version -ne $cmakeVersion) {
+    Write-Host "FAIL: VERSION=$version but CMakeLists.txt=$cmakeVersion" -ForegroundColor Red
+    exit 1
+}
+Write-Host "PASS: VERSION = $version (matches CMakeLists.txt)" -ForegroundColor Green
 
 # 2. Verify cmake build
 Write-Host "Configuring..." -ForegroundColor Yellow
