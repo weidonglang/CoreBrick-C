@@ -11,6 +11,8 @@
 - [File](./file.md) - File utilities
 - [File](./file.md) - File utilities
 - [Timer](./timer.md) - High-resolution timer
+- [Timer](./timer.md) - High-resolution timer
+- [BitSet](./bitset.md) - Fixed-size bit array
 
 ## Error Codes
 

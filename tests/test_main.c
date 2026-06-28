@@ -24,6 +24,7 @@ void test_file(void);
 void test_edge_cases(void);
 void test_timer(void);
 
+void test_bitset(void);
 int main(void) {
     printf("=== CoreBrick-C Test Suite ===\n\n");
     printf("--- Error Module ---\n");
@@ -59,6 +60,7 @@ test_file();
     test_edge_cases();
 test_timer();
 
+test_bitset();
     printf("\n--- Summary ---\n");
     printf("Total: %d, Passed: %d, Failed: %d\n\n",
            tests_passed + tests_failed, tests_passed, tests_failed);

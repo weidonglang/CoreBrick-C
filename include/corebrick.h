@@ -10,4 +10,5 @@
 #include "cb_file.h"
 
 #include "cb_timer.h"
+#include "cb_bitset.h"
 #endif /* COREBRICK_H */
