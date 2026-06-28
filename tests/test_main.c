@@ -21,10 +21,11 @@ void test_string_view(void);
 void test_vector(void);
 void test_hash(void);
 void test_file(void);
-void test_edge_cases(void);
 void test_timer(void);
-
 void test_bitset(void);
+void test_ring(void);
+void test_edge_cases(void);
+
 int main(void) {
     printf("=== CoreBrick-C Test Suite ===\n\n");
     printf("--- Error Module ---\n");
@@ -32,7 +33,7 @@ int main(void) {
          cb_error_string(CB_OK) != NULL && strlen(cb_error_string(CB_OK)) > 0);
     TEST("cb_error_string(CB_OK) returns OK",
          strcmp(cb_error_string(CB_OK), "OK") == 0);
-TEST("cb_error_string(CB_ERR_INVALID_ARGUMENT) returns non-empty",
+    TEST("cb_error_string(CB_ERR_INVALID_ARGUMENT) returns non-empty",
          cb_error_string(CB_ERR_INVALID_ARGUMENT) != NULL && strlen(cb_error_string(CB_ERR_INVALID_ARGUMENT)) > 0);
     TEST("cb_error_string(CB_ERR_OUT_OF_MEMORY) returns non-empty",
          cb_error_string(CB_ERR_OUT_OF_MEMORY) != NULL && strlen(cb_error_string(CB_ERR_OUT_OF_MEMORY)) > 0);
@@ -56,11 +57,12 @@ TEST("cb_error_string(CB_ERR_INVALID_ARGUMENT) returns non-empty",
     test_string_view();
     test_vector();
     test_hash();
-test_file();
+    test_file();
+    test_timer();
+    test_bitset();
+    test_ring();
     test_edge_cases();
-test_timer();
 
-test_bitset();
     printf("\n--- Summary ---\n");
     printf("Total: %d, Passed: %d, Failed: %d\n\n",
            tests_passed + tests_failed, tests_passed, tests_failed);

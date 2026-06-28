@@ -13,6 +13,7 @@
 - [Timer](./timer.md) - High-resolution timer
 - [Timer](./timer.md) - High-resolution timer
 - [BitSet](./bitset.md) - Fixed-size bit array
+- [RingBuffer](./ring.md) - Fixed-capacity FIFO ring buffer
 
 ## Error Codes
 
