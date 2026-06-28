@@ -2,8 +2,9 @@
 $ErrorActionPreference = "Stop"
 
 $cmakePath = "cmake"
-if (Test-Path "C:\CMake\bin\cmake.exe") {
-    $cmakePath = "C:\CMake\bin\cmake.exe"
+$vsCmake = "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe"
+if (Test-Path $vsCmake) {
+    $cmakePath = $vsCmake
 }
 
 Write-Host "=== Configuring ===" -ForegroundColor Cyan
@@ -21,16 +22,6 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "=== Running tests ===" -ForegroundColor Cyan
-& $cmakePath --build build --target corebrick_tests 2>$null
-if ($LASTEXITCODE -ne 0) {
-    # Try running directly
-    if (Test-Path "build\Debug\corebrick_tests.exe") {
-        & "build\Debug\corebrick_tests.exe"
-    } else {
-        & .\build\Debug\corebrick_tests.exe 2>$null
-    }
-}
-
 & ctest --test-dir build --output-on-failure
 if ($LASTEXITCODE -ne 0) {
     Write-Host "FAIL: tests failed" -ForegroundColor Red
