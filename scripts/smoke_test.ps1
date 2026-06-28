@@ -41,7 +41,21 @@ $output = & $testExe 2>&1 | Out-String
 Write-Host $output
 if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: tests failed" -ForegroundColor Red; exit 1 }
 
-# 4. Run CLI
+# 4. Run Benchmark
+$benchExe = "build\Debug\corebrick_bench.exe"
+if (Test-Path $benchExe) {
+    $benchOutput = & $benchExe 2>&1 | Out-String
+    Write-Host $benchOutput
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "Benchmark runs: PASS" -ForegroundColor Green
+    } else {
+        Write-Host "WARN: benchmark failed" -ForegroundColor Yellow
+    }
+} else {
+    Write-Host "WARN: corebrick_bench.exe not found, skipping" -ForegroundColor Yellow
+}
+
+# 5. Run CLI
 $cliExe = "build\Debug\cbcli.exe"
 if (Test-Path $cliExe) {
     $cliOutput = & $cliExe version 2>&1
