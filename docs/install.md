@@ -44,7 +44,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 find_package(CoreBrick CONFIG REQUIRED)
 
 add_executable(my_app main.c)
-target_link_libraries(my_app PRIVATE CoreBrick::corebrick)
+target_link_libraries(my_app PRIVATE CoreBrick::corebrick_static)
 ```
 
 ### Windows (PowerShell)

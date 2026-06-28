@@ -1,5 +1,43 @@
 # Release Notes
 
+## v0.4.0
+
+### CMake Package Support & Installation
+
+This release introduces proper CMake install/export/find_package support and installation documentation:
+
+#### CMake Install Infrastructure
+- Added `CMakePackageConfigHelpers`-based install with `CoreBrickConfig.cmake` and version file
+- Created `cmake/CoreBrickConfig.cmake.in` template with `find_dependency` support
+- Added `CoreBrick::corebrick_static` IMPORTED target for external `find_package` consumers
+- Added `install()` rules for library, headers, CMake config, and targets export
+- Added `GNUInstallDirs` integration for platform-appropriate install paths
+
+#### Version Header & API Policy
+- Added `include/corebrick_version.h` with `COREBRICK_VERSION_MAJOR`/`MINOR`/`PATCH`/`STRING` macros
+- Added `docs/api_policy.md` documenting public API contract, deprecation policy, and versioning
+- Embedded version string in all headers and library via compile-time generation
+
+#### Documentation
+- Added `docs/install.md` with build, install, and external project usage instructions
+- Updated `docs/api_reference.md` with version API section
+- Updated `README.md` with installation section
+- Added `install_test.c` using `find_package(CoreBrick CONFIG REQUIRED)` verifying all 11 modules are linkable
+- Added CI install test step that builds external project against installed artifacts
+
+#### Project Structure
+- Created `tests/cmake_install_test/` as standalone CMake project for post-install verification
+- Added `minimal_example.c` demonstrating minimal usage with CMake install
+
+#### Known Limitations
+
+- No SIMD optimizations
+- No thread-safe variants
+- No language bindings
+- No JSON parser
+- No lock-free queue
+- Bloom Filter has false positives (documented)
+
 ## v0.3.3
 
 ### Reliability & CI Fix

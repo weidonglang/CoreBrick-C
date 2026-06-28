@@ -49,6 +49,8 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 
 ## Quick Start
 
+### Build & Test
+
 ```powershell
 # Build
 cmake -S . -B build
@@ -56,26 +58,55 @@ cmake --build build
 
 # Run tests
 ctest --test-dir build --output-on-failure
+```
 
-# Run CLI
+### Install
+
+```powershell
+# Install to a local prefix
+cmake --install build --prefix build/install
+
+# Or install system-wide (requires admin)
+# cmake --install build
+```
+
+### Use in External CMake Projects
+
+Add to your `CMakeLists.txt`:
+
+```cmake
+find_package(CoreBrick CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE CoreBrick::corebrick_static)
+```
+
+Then configure with the install prefix:
+
+```powershell
+cmake -S . -B build -DCMAKE_PREFIX_PATH="/path/to/CoreBrick-C/build/install"
+```
+
+See [docs/install.md](./docs/install.md) for details.
+
+### Run CLI & Examples
+
+```powershell
 build\Debug\cbcli.exe
-
-# Run examples
 build\Debug\arena_example.exe
 build\Debug\buffer_example.exe
-build\\Debug\\bitset_example.exe
-build\\Debug\\ring_example.exe
-build\\Debug\\bloom_example.exe
-build\\Debug\\string_map_example.exe
-
-
+build\Debug\bitset_example.exe
+build\Debug\ring_example.exe
+build\Debug\bloom_example.exe
+build\Debug\string_map_example.exe
 build\Debug\string_view_example.exe
 build\Debug\vector_example.exe
 build\Debug\hash_example.exe
 build\Debug\file_example.exe
 build\Debug\timer_example.exe
+```
 
-# Run benchmarks
+### Run Benchmarks
+
+```powershell
 build\Debug\corebrick_bench.exe
 ```
 

@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.3.3
-- Latest tag: v0.3.3
+- Latest release: v0.4.0
+- Latest tag: v0.4.0
 
 ## v0.1.0 Task Traceability
 
@@ -75,6 +75,17 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | Task 1 | Restore tests and version scripts | #27 | #28 | task-1-restore-ci-scripts | 9262984 | MERGED |
 | Task 2 | Release v0.3.3 | #29 | #30 | task-2-release-v0.3.3 | d52d21b | MERGED |
 
+## v0.4.0 Task Traceability
+
+| Task | Scope | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| Task 1 | CMake install / export / package config | #31 | #32 | task-1-cmake-install | | PENDING |
+| Task 2 | Version header / API policy | #33 | #34 | task-2-version-policy | | PENDING |
+| Task 3 | Embed minimal example | #35 | #36 | task-3-minimal-example | | PENDING |
+| Task 4 | Install test / CI validation | #37 | #38 | task-4-install-test-ci | | PENDING |
+| Task 5 | Release package contents | #39 | #40 | task-5-release-package | | PENDING |
+| Task 6 | v0.4.0 Release | #41 | #42 | task-6-release-v0.4.0 | | PENDING |
+
 ## Known Limitations
 
 - v0.1.0 was delivered as a consolidated initial release.
@@ -100,3 +111,8 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 - Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.3
 - Release asset: CoreBrick-C-v0.3.3.zip
+
+## Release (v0.4.0)
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.4.0
+- Release asset: CoreBrick-C-v0.4.0.zip
