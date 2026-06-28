@@ -110,6 +110,9 @@ target_link_libraries(bloom_example PRIVATE corebrick_static)
 add_executable(string_map_example examples/string_map_example.c)
 target_link_libraries(string_map_example PRIVATE corebrick_static)
 
+add_executable(minimal_example examples/minimal_example.c)
+target_link_libraries(minimal_example PRIVATE corebrick_static)
+
 # Benchmark
 add_executable(corebrick_bench
     benchmarks/bench_main.c
