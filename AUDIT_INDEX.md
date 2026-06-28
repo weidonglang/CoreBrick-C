@@ -42,11 +42,11 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
 |---|---|---|---|---|---|---|
-| Task 0 | PR Audit Guard | #1 |  | task-0-pr-audit-guard |  | IN PROGRESS |
-| Task 1 | BitSet |  |  | task-1-bitset |  | PENDING |
-| Task 2 | RingBuffer |  |  | task-2-ring-buffer |  | PENDING |
-| Task 3 | Bloom Filter |  |  | task-3-bloom-filter |  | PENDING |
-| Task 4 | StringMap |  |  | task-4-string-map |  | PENDING |
+| Task 0 | PR Audit Guard | #1 | #2 | task-0-pr-audit-guard | 58a567a | MERGED |
+| Task 1 | BitSet | #3 | #4 | task-1-bitset | 3aaa0b0 | MERGED |
+| Task 2 | RingBuffer | #5 | #6 | task-2-ring-buffer | 2740fd4 | MERGED |
+| Task 3 | Bloom Filter | #7 | #8 | task-3-bloom-filter | aa43af8 | MERGED |
+| Task 4 | StringMap | #9 |  | task-4-string-map |  | IN PROGRESS |
 | Task 5 | Release |  |  | task-5-release-v0.3.0 |  | PENDING |
 
 ## Known Limitations
