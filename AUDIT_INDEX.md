@@ -5,6 +5,8 @@
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
 - Latest release: v0.2.0
+- Latest release: v0.3.0
+- Latest tag: v0.3.0
 - Latest tag: v0.2.0
 
 ## v0.1.0 Task Traceability
@@ -47,6 +49,8 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | Task 2 | RingBuffer | #5 | #6 | task-2-ring-buffer | 2740fd4 | MERGED |
 | Task 3 | Bloom Filter | #7 | #8 | task-3-bloom-filter | aa43af8 | MERGED |
 | Task 4 | StringMap | #9 |  | task-4-string-map |  | IN PROGRESS |
+| Task 4 | StringMap | #9 | #11 | task-4-string-map | 98d40e6 | MERGED |
+| Task 5 | Release | #12 |  | task-5-release-v0.3.0 |  | IN PROGRESS |
 | Task 5 | Release |  |  | task-5-release-v0.3.0 |  | PENDING |
 
 ## Known Limitations

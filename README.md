@@ -5,6 +5,13 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 ## Features
 
 ### v0.2.0 Modules
+### v0.3.0 Modules
+- **BitSet** - Fixed-size bit array for state flags
+- **RingBuffer** - Fixed-capacity FIFO ring buffer
+- **Bloom Filter** - Probabilistic set membership filter
+- **StringMap** - String-to-string hash table with open addressing
+
+
 - **Vector** - Generic dynamic array
 - **Hash** - Non-cryptographic hash utilities (FNV-1a, CRC-32)
 - **FileUtils** - File read/write/size/exists utilities
@@ -32,6 +39,12 @@ build\Debug\cbcli.exe
 # Run examples
 build\Debug\arena_example.exe
 build\Debug\buffer_example.exe
+build\\Debug\\bitset_example.exe
+build\\Debug\\ring_example.exe
+build\\Debug\\bloom_example.exe
+build\\Debug\\string_map_example.exe
+
+
 build\Debug\string_view_example.exe
 build\Debug\vector_example.exe
 build\Debug\hash_example.exe

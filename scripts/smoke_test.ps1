@@ -12,7 +12,7 @@ Write-Host "=== Smoke Test ===" -ForegroundColor Cyan
 
 # 1. Verify VERSION
 $version = (Get-Content "VERSION" -Raw).Trim()
-if ($version -ne "0.1.0") {
+if ($version -ne "0.3.0") {
     Write-Host "FAIL: VERSION mismatch" -ForegroundColor Red
     exit 1
 }
