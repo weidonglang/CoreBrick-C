@@ -1,6 +1,17 @@
 #include "cb_arena.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+
+/* Default alignment: max_align_t on most platforms is 8 or 16 */
+#define ARENA_DEFAULT_ALIGNMENT (sizeof(void *) > 4 ? 16 : 8)
+
+static size_t align_up_size(size_t value, size_t alignment) {
+    if (alignment == 0) return value;
+    size_t mask = alignment - 1;
+    if (value > SIZE_MAX - mask) return SIZE_MAX; /* overflow */
+    return (value + mask) & ~mask;
+}
 
 struct CB_Arena {
     unsigned char *buffer;
@@ -41,12 +52,17 @@ void *cb_arena_alloc(CB_Arena *arena, size_t size) {
     if (size == 0) {
         return NULL;
     }
-    if (arena->used + size > arena->capacity) {
+
+    /* Align current offset up to default alignment */
+    size_t aligned_used = align_up_size(arena->used, ARENA_DEFAULT_ALIGNMENT);
+
+    /* Check overflow: size > capacity - aligned_used */
+    if (size > arena->capacity - aligned_used) {
         return NULL;
     }
 
-    void *ptr = arena->buffer + arena->used;
-    arena->used += size;
+    void *ptr = arena->buffer + aligned_used;
+    arena->used = aligned_used + size;
     return ptr;
 }
 
