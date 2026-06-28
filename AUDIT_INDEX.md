@@ -38,6 +38,17 @@ powershell -ExecutionPolicy Bypass -File scripts/check_no_artifacts.ps1
 powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ```
 
+## v0.3.0 Task Traceability
+
+| Task | Module | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| Task 0 | PR Audit Guard | #1 |  | task-0-pr-audit-guard |  | IN PROGRESS |
+| Task 1 | BitSet |  |  | task-1-bitset |  | PENDING |
+| Task 2 | RingBuffer |  |  | task-2-ring-buffer |  | PENDING |
+| Task 3 | Bloom Filter |  |  | task-3-bloom-filter |  | PENDING |
+| Task 4 | StringMap |  |  | task-4-string-map |  | PENDING |
+| Task 5 | Release |  |  | task-5-release-v0.3.0 |  | PENDING |
+
 ## Known Limitations
 
 - v0.1.0 was delivered as a consolidated initial release.
