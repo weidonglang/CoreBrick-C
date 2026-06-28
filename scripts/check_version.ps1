@@ -1,9 +1,10 @@
 # Check VERSION file matches project version
 $ErrorActionPreference = "Stop"
 
-$versionFile = "VERSION"
+$rootDir = Split-Path -Parent $PSScriptRoot
+$versionFile = Join-Path $rootDir "VERSION"
 if (-not (Test-Path $versionFile)) {
-    Write-Host "FAIL: VERSION file not found" -ForegroundColor Red
+    Write-Host "FAIL: VERSION file not found at $versionFile" -ForegroundColor Red
     exit 1
 }
 

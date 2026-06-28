@@ -1,6 +1,9 @@
 # Check no build artifacts are tracked by git
 $ErrorActionPreference = "Stop"
 
+$rootDir = Split-Path -Parent $PSScriptRoot
+Set-Location $rootDir
+
 # Patterns to check
 $patterns = @(
     "*.exe",
