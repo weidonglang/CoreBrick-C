@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
-project(corebrick VERSION 0.3.3 LANGUAGES C)
+project(corebrick VERSION 0.4.0 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 # Sources
 set(CB_SOURCES
@@ -22,6 +25,7 @@ set(CB_SOURCES
 
 set(CB_HEADERS
     include/corebrick.h
+    include/corebrick_version.h
     include/cb_error.h
     include/cb_arena.h
     include/cb_buffer.h
@@ -38,7 +42,14 @@ set(CB_HEADERS
 
 # Static library
 add_library(corebrick_static STATIC ${CB_SOURCES} ${CB_HEADERS})
-target_include_directories(corebrick_static PUBLIC include)
+target_include_directories(corebrick_static
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
+
+# Alias target for find_package usage
+add_library(CoreBrick::corebrick ALIAS corebrick_static)
 
 # CLI
 add_executable(cbcli cli/cbcli.c)
@@ -109,3 +120,39 @@ add_executable(corebrick_bench
 )
 target_include_directories(corebrick_bench PRIVATE include)
 target_link_libraries(corebrick_bench PRIVATE corebrick_static)
+
+# Install
+install(TARGETS corebrick_static
+    EXPORT CoreBrickTargets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+install(DIRECTORY include/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(EXPORT CoreBrickTargets
+    FILE CoreBrickTargets.cmake
+    NAMESPACE CoreBrick::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CoreBrick
+)
+
+configure_package_config_file(
+    cmake/CoreBrickConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/CoreBrickConfig.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CoreBrick
+)
+
+write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/CoreBrickConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/CoreBrickConfig.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/CoreBrickConfigVersion.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/CoreBrick
+)

@@ -1,6 +1,7 @@
 #ifndef COREBRICK_H
 #define COREBRICK_H
 
+#include "corebrick_version.h"
 #include "cb_error.h"
 #include "cb_arena.h"
 #include "cb_buffer.h"
