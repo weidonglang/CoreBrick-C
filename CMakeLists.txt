@@ -11,6 +11,7 @@ set(CB_SOURCES
     src/cb_buffer.c
     src/cb_string_view.c
     src/cb_vector.c
+src/cb_hash.c
 )
 
 set(CB_HEADERS
@@ -20,6 +21,7 @@ set(CB_HEADERS
     include/cb_buffer.h
     include/cb_string_view.h
     include/cb_vector.h
+include/cb_hash.h
 )
 
 # Static library
@@ -38,6 +40,7 @@ add_executable(corebrick_tests
     tests/test_arena.c
     tests/test_buffer.c
     tests/test_string_view.c
+tests/test_hash.c
     tests/test_vector.c
     tests/test_edge_cases.c
 )
@@ -58,3 +61,5 @@ target_link_libraries(string_view_example PRIVATE corebrick_static)
 
 add_executable(vector_example examples/vector_example.c)
 target_link_libraries(vector_example PRIVATE corebrick_static)
+add_executable(hash_example examples/hash_example.c)
+target_link_libraries(hash_example PRIVATE corebrick_static)
