@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.3.0
-- Latest tag: v0.3.0
+- Latest release: v0.3.1
+- Latest tag: v0.3.1
 
 ## v0.1.0 Task Traceability
 
@@ -49,13 +49,25 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | Task 4 | StringMap | #9 | #11 | task-4-string-map | 98d40e6 | MERGED |
 | Task 5 | Release | #12 | #13 | task-5-release-v0.3.0 | 4b651d2 | MERGED |
 
+## v0.3.1 Task Traceability
+
+| Task | Scope | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| Task 0 | v0.3.0 audit records | (in commit 7139176) | - | main | 7139176 | MERGED |
+| Task 1 | StringMap portability / rehash | #14 | #15 | task-1-fix-string-map | 129511c | MERGED |
+| Task 2 | Allocation overflow / alignment | #16 | #17 | task-2-fix-allocation-safety | c8a8a6e | MERGED |
+| Task 3 | FileUtils size / close handling | #18 | #19 | task-3-fix-file-utils | 3662fe8 | MERGED |
+| Task 4 | Bloom / StringView edge semantics | #20 | #21 | task-4-fix-edge-semantics | 720a771 | MERGED |
+| Task 5 | Hash / CMake cleanup | #22 | #23 | task-5-fix-hash-cmake | e073031 | MERGED |
+| Task 6 | Release | #24 | | task-6-release-v0.3.1 | | IN PROGRESS |
+
 ## Known Limitations
 
 - v0.1.0 was delivered as a consolidated initial release.
 - v0.2.0 used separate branches and commits per module, but GitHub pull requests were not created or are not available for audit.
 - No language bindings.
 
-## Release
+## Release (v0.3.0)
 
 - Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.0
 - Release asset: CoreBrick-C-v0.3.0.zip

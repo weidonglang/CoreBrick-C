@@ -5,6 +5,19 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 ## Features
 
 ### v0.2.0 Modules
+### v0.3.1 Reliability Patch
+- 15 reliability fixes across all modules
+  - StringMap: portable strdup, rehash safety
+  - Arena: alignment, overflow checks
+  - ByteBuffer / Vector / RingBuffer: integer overflow checks
+  - FileUtils: 64-bit file size, fclose check
+  - Bloom: empty key semantics
+  - StringView: empty needle, NULL split
+  - CRC32: static const table, thread-safe
+  - CMake: examples cleanup
+- See [Release Notes](./docs/release_notes.md) for details
+
+
 ### v0.3.0 Modules
 - **BitSet** - Fixed-size bit array for state flags
 - **RingBuffer** - Fixed-capacity FIFO ring buffer

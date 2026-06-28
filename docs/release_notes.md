@@ -1,5 +1,55 @@
 # Release Notes
 
+## v0.3.1
+
+### Reliability Fixes
+
+This patch release fixes 15 issues across all modules:
+
+#### StringMap
+- Replaced `_strdup` with portable `cb_strdup_local` (strlen + malloc + memcpy)
+- Rewrote `rehash` to use internal `insert_into` instead of public `cb_string_map_put`
+- Fixed rehash failure path: frees partially copied entries, restores old table state
+
+#### Arena
+- Fixed `used + size` overflow check: `size > capacity - used`
+- Added default `max_align_t` alignment for all allocations
+
+#### ByteBuffer / Vector / RingBuffer
+- Added integer overflow checks for `size + len`, `capacity * 2`, `element_size * capacity`
+
+#### FileUtils
+- Replaced `long` with `int64_t` for file size (supports large files)
+- `cb_file_write_all` now checks `fclose` return value
+- `cb_file_read_all` initializes `out_buffer` fresh
+
+#### Bloom Filter
+- Empty input (`NULL, 0` and `"", 0`) now adds a valid key with inserted bits
+
+#### StringView
+- `cb_sv_find` with empty needle now returns 0 (not found)
+- `cb_sv_split_next` handles NULL input safely
+
+#### Hash
+- Replaced lazy CRC32 table initialization with static const table (thread-safe)
+
+#### CMake
+- Fixed examples `target_link_libraries` alignment
+
+### v0.3.0 Modules (carried forward)
+
+- BitSet, RingBuffer, Bloom Filter, StringMap
+- Vector, Hash, FileUtils, Timer, Benchmark
+- Arena, ByteBuffer, StringView
+
+### Known Limitations
+
+- No SIMD optimizations
+- No thread-safe variants
+- No language bindings
+- No JSON parser
+- No lock-free queue
+- Bloom Filter has false positives (documented)
 
 ## v0.3.0
 
