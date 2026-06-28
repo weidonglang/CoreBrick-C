@@ -18,6 +18,7 @@ int tests_failed = 0;
 void test_arena(void);
 void test_buffer(void);
 void test_string_view(void);
+void test_vector(void);
 void test_edge_cases(void);
 
 int main(void) {
@@ -49,6 +50,7 @@ TEST("cb_error_string(CB_ERR_INVALID_ARGUMENT) returns non-empty",
     test_arena();
     test_buffer();
     test_string_view();
+    test_vector();
     test_edge_cases();
 
     printf("\n--- Summary ---\n");

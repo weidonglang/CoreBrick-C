@@ -10,6 +10,7 @@ set(CB_SOURCES
     src/cb_arena.c
     src/cb_buffer.c
     src/cb_string_view.c
+    src/cb_vector.c
 )
 
 set(CB_HEADERS
@@ -18,6 +19,7 @@ set(CB_HEADERS
     include/cb_arena.h
     include/cb_buffer.h
     include/cb_string_view.h
+    include/cb_vector.h
 )
 
 # Static library
@@ -36,6 +38,7 @@ add_executable(corebrick_tests
     tests/test_arena.c
     tests/test_buffer.c
     tests/test_string_view.c
+    tests/test_vector.c
     tests/test_edge_cases.c
 )
 target_include_directories(corebrick_tests PRIVATE include)
@@ -52,3 +55,6 @@ target_link_libraries(buffer_example PRIVATE corebrick_static)
 
 add_executable(string_view_example examples/string_view_example.c)
 target_link_libraries(string_view_example PRIVATE corebrick_static)
+
+add_executable(vector_example examples/vector_example.c)
+target_link_libraries(vector_example PRIVATE corebrick_static)
