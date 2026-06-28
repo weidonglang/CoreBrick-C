@@ -25,13 +25,13 @@
 
 ## GitHub Traceability
 
-| Task | Issue | PR | Commit |
-|---|---|---|---|
-| Task 0 | #1 | #1 | dc9232e |
-| Task 1 | #2 | #2 | dc9232e |
-| Task 2 | #3 | #3 | dc9232e |
-| Task 3 | #4 | #4 | dc9232e |
-| Task 4 | #5 | #5 | dc9232e |
+| Task | Issue | Commit |
+|---|---|---|
+| Task 0 | — | f8a5221 |
+| Task 1 | — | f8a5221 |
+| Task 2 | — | f8a5221 |
+| Task 3 | — | f8a5221 |
+| Task 4 | — | f8a5221 |
 
 ## Artifact Check
 
@@ -48,5 +48,6 @@
 
 ## Known Limitations
 
-- v0.1.0 only includes Arena, ByteBuffer, and StringView.
+- v0.1.0 was delivered as a consolidated initial release. Future versions will strictly enforce one issue, one branch, one commit, and one pull request per module.
+- Only Arena, ByteBuffer, and StringView are included.
 - No HashMap, Bloom Filter, RingBuffer, FileUtils, Timer, or language bindings yet.
