@@ -55,6 +55,18 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 - v0.2.0 used separate branches and commits per module, but GitHub pull requests were not created or are not available for audit.
 - No language bindings.
 
+## v0.3.1 Task Traceability
+
+| Task | Module | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| | Task 0 | Fix Audit Records | #46 | #47 | task-0-fix-v0.3.0-audit | b72a476 | MERGED |
+| | Task 1 | StringMap | #48 | #49 | task-1-fix-string-map | 21810d3 | MERGED |
+| | Task 2 | Allocation Safety | #50 | #50 | task-2-fix-allocation-safety | d4355f2 | MERGED |
+| | Task 3 | FileUtils | #51 | #51 | task-3-fix-file-utils | 1032012 | MERGED |
+| | Task 4 | Bloom/StringView | #52 | #53 | task-4-fix-edge-semantics | 388aa08 | MERGED |
+| | Task 5 | Hash/CMake | | | task-5-fix-hash-cmake | | IN PROGRESS |
+| | Task 6 | Release | | | task-6-release-v0.3.1 | | PENDING |
+
 ## Release (v0.3.0)
 
 - Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.0
