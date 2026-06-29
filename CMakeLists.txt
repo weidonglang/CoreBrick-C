@@ -48,8 +48,14 @@ target_include_directories(corebrick_static
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-# Alias target for find_package usage
+# Alias target for find_package usage (build tree)
 add_library(CoreBrick::corebrick ALIAS corebrick_static)
+
+# Export properties: installed target name is CoreBrick::corebrick
+set_target_properties(corebrick_static PROPERTIES
+    EXPORT_NAME corebrick
+    OUTPUT_NAME corebrick
+)
 
 # CLI
 add_executable(cbcli cli/cbcli.c)
