@@ -7,4 +7,4 @@ set(CMAKE_C_STANDARD 11)
 find_package(CoreBrick CONFIG REQUIRED)
 
 add_executable(test_install test_install.c)
-target_link_libraries(test_install PRIVATE CoreBrick::corebrick_static)
+target_link_libraries(test_install PRIVATE CoreBrick::corebrick)
