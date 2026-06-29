@@ -84,7 +84,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 |---|---|---|---|---|---|---|
 | | Task 1 | Fix CMake Target Name | #38 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
 | | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
-| | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | TBD-after-merge | PENDING |
+| | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
 
 ## Release (v0.3.0)
 
