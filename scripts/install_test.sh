@@ -2,24 +2,30 @@
 # Install test - verify that installed CoreBrick-C can be found via find_package
 set -euo pipefail
 
+INSTALL_PREFIX="${1:-}"
+
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT_DIR"
 
-INSTALL_ROOT="$ROOT_DIR/build_install_root"
+INSTALL_ROOT="${INSTALL_PREFIX:-$ROOT_DIR/build_install_root}"
 INSTALL_TEST_DIR="$ROOT_DIR/build_install_test"
 
 echo "=== Install Test ==="
 
-# Step 1: Configure and build CoreBrick-C
-echo "Configuring CoreBrick-C..."
-cmake -S . -B build_install -DCMAKE_INSTALL_PREFIX="$INSTALL_ROOT" -DCMAKE_BUILD_TYPE=Release
+if [ -z "$INSTALL_PREFIX" ]; then
+    # Step 1: Configure and build CoreBrick-C
+    echo "Configuring CoreBrick-C..."
+    cmake -S . -B build_install -DCMAKE_INSTALL_PREFIX="$INSTALL_ROOT" -DCMAKE_BUILD_TYPE=Release
 
-echo "Building CoreBrick-C..."
-cmake --build build_install
+    echo "Building CoreBrick-C..."
+    cmake --build build_install
 
-# Step 2: Install
-echo "Installing CoreBrick-C..."
-cmake --install build_install
+    # Step 2: Install
+    echo "Installing CoreBrick-C..."
+    cmake --install build_install
+else
+    echo "Using pre-installed prefix: $INSTALL_ROOT"
+fi
 
 # Step 3: Verify install layout
 echo "Verifying install layout..."

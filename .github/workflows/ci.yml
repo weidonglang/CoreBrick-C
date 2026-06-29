@@ -26,14 +26,29 @@ jobs:
     - name: Test
       run: ctest --test-dir build -C Debug --output-on-failure
 
-    - name: Install Test
+    - name: Install
+      run: cmake --install build --prefix "${{ runner.temp }}/corebrick-install"
+
+    - name: Install Test (cmake_install_test)
       shell: bash
       run: |
-        cmake --install build --prefix "${{ runner.temp }}/corebrick-install"
         cmake -S tests/cmake_install_test -B build_install_test \
           -DCMAKE_PREFIX_PATH="${{ runner.temp }}/corebrick-install"
         cmake --build build_install_test
         ./build_install_test/test_install
+
+    - name: Install Test Script (Windows)
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
+      run: |
+        ./scripts/install_test.ps1 -InstallPrefix "${{ runner.temp }}/corebrick-install"
+
+    - name: Install Test Script (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: |
+        chmod +x ./scripts/install_test.sh
+        ./scripts/install_test.sh "${{ runner.temp }}/corebrick-install"
 
     - name: Windows Scripts
       if: matrix.os == 'windows-latest'

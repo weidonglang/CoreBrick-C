@@ -1,4 +1,8 @@
 # Install test - verify that installed CoreBrick-C can be found via find_package
+param(
+    [string]$InstallPrefix = ""
+)
+
 $ErrorActionPreference = "Stop"
 
 $rootDir = Split-Path -Parent $PSScriptRoot
@@ -8,24 +12,32 @@ $cmakePath = "cmake"
 $vsCmake = "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe"
 if (Test-Path $vsCmake) { $cmakePath = $vsCmake }
 
-$installRoot = Join-Path $rootDir "build_install_root"
+if ($InstallPrefix -eq "") {
+    $installRoot = Join-Path $rootDir "build_install_root"
+} else {
+    $installRoot = $InstallPrefix
+}
 $installTestDir = Join-Path $rootDir "build_install_test"
 
 Write-Host "=== Install Test ===" -ForegroundColor Cyan
 
-# Step 1: Configure and build CoreBrick-C
-Write-Host "Configuring CoreBrick-C..." -ForegroundColor Yellow
-& $cmakePath -S . -B build_install -DCMAKE_INSTALL_PREFIX="$installRoot" 2>&1 | Out-Null
-if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake configure" -ForegroundColor Red; exit 1 }
+if ($InstallPrefix -eq "") {
+    # Step 1: Configure and build CoreBrick-C
+    Write-Host "Configuring CoreBrick-C..." -ForegroundColor Yellow
+    & $cmakePath -S . -B build_install -DCMAKE_INSTALL_PREFIX="$installRoot" 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake configure" -ForegroundColor Red; exit 1 }
 
-Write-Host "Building CoreBrick-C..." -ForegroundColor Yellow
-& $cmakePath --build build_install --config Debug 2>&1 | Out-Null
-if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake build" -ForegroundColor Red; exit 1 }
+    Write-Host "Building CoreBrick-C..." -ForegroundColor Yellow
+    & $cmakePath --build build_install --config Debug 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake build" -ForegroundColor Red; exit 1 }
 
-# Step 2: Install
-Write-Host "Installing CoreBrick-C..." -ForegroundColor Yellow
-& $cmakePath --install build_install --config Debug 2>&1 | Out-Null
-if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake install" -ForegroundColor Red; exit 1 }
+    # Step 2: Install
+    Write-Host "Installing CoreBrick-C..." -ForegroundColor Yellow
+    & $cmakePath --install build_install --config Debug 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { Write-Host "FAIL: cmake install" -ForegroundColor Red; exit 1 }
+} else {
+    Write-Host "Using pre-installed prefix: $installRoot" -ForegroundColor Yellow
+}
 
 # Step 3: Verify install layout
 Write-Host "Verifying install layout..." -ForegroundColor Yellow
