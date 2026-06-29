@@ -1,5 +1,24 @@
 # Release Notes
 
+## v0.4.2
+
+### Packaging & Audit Cleanup Patch
+
+- Aligned VERSION, CMake project version, and `corebrick_version.h`
+- Updated README project positioning
+- Improved release source package contents
+- Fixed install_test path checks for CMake package files
+- Cleaned audit traceability records
+- v0.4.2 supersedes v0.4.1 as the clean packaging release
+
+## v0.4.1
+
+### Integration Completion Patch
+
+- Fixed exported CMake target name to `CoreBrick::corebrick`
+- Updated install test to use `CoreBrick::corebrick`
+- Finalized v0.4.1 audit records
+
 ## v0.4.0
 
 ### CMake Package Support & Installation

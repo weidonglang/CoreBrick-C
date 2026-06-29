@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.4.1
-- Latest tag: v0.4.1
+- Latest release: v0.4.2
+- Latest tag: v0.4.2
 
 ## v0.1.0 Task Traceability
 
@@ -81,10 +81,21 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ## v0.4.1 Task Traceability
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
-|---|---|---|---|---|---|---|
-| | Task 1 | Fix CMake Target Name | #38 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
-| | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
-| | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
+|---|---|---|---|---|---|---|---|
+| | | Task 1 | Fix CMake Target Name | #46 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
+| | | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
+| | | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
+
+## v0.4.2 Task Traceability
+
+| Task | Module | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|---|
+| | | Task 1 | Version Docs | TBD | TBD | task-1-align-version-docs-v0.4.2 | TBD-after-merge | PENDING |
+| | | Task 2 | Source Package | TBD | TBD | task-2-source-release-package | TBD-after-merge | PENDING |
+| | | Task 3 | Install Test | TBD | TBD | task-3-harden-install-test | TBD-after-merge | PENDING |
+| | | Task 4 | CI Install Test | TBD | TBD | task-4-fix-ci-install-test | TBD-after-merge | PENDING |
+| | | Task 5 | Audit Cleanup | TBD | TBD | task-5-clean-audit-records | TBD-after-merge | PENDING |
+| | | Task 6 | Release | TBD | TBD | task-6-release-v0.4.2 | TBD-after-merge | PENDING |
 
 ## Release (v0.3.0)
 
