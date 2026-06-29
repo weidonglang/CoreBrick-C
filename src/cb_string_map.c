@@ -72,6 +72,7 @@ static CB_Error rehash(CB_StringMap *map, size_t new_capacity) {
     Entry *old_entries = map->entries;
     size_t old_capacity = map->capacity;
     size_t old_size = map->size;
+    size_t old_tombstones = map->tombstone_count;
 
     Entry *new_entries = (Entry *)calloc(new_capacity, sizeof(Entry));
     if (new_entries == NULL) return CB_ERR_OUT_OF_MEMORY;
@@ -114,7 +115,7 @@ static CB_Error rehash(CB_StringMap *map, size_t new_capacity) {
         map->entries = old_entries;
         map->capacity = old_capacity;
         map->size = old_size;
-        map->tombstone_count = 0;
+        map->tombstone_count = old_tombstones;
         return err;
     }
 

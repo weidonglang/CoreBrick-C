@@ -15,6 +15,12 @@ extern int tests_failed;
     } \
 } while (0)
 
+static char buf[256];
+const char *format_key(int n) {
+    snprintf(buf, sizeof(buf), "key-%d", n);
+    return buf;
+}
+
 void test_string_map(void) {
     printf("\n--- StringMap Module ---\n");
 
@@ -109,6 +115,79 @@ void test_string_map(void) {
     cb_string_map_get(map, "c", &val); TEST("tombstone 'c' ok", val && strcmp(val, "3") == 0);
     cb_string_map_put(map, "d", "4");
     cb_string_map_get(map, "d", &val); TEST("add after tombstone ok", val && strcmp(val, "4") == 0);
+
+    /* rehash preserves keys */
+    cb_string_map_clear(map);
+    for (int i = 0; i < 50; i++) {
+        snprintf(k, sizeof(k), "key-%d", i);
+        snprintf(v, sizeof(v), "val-%d", i);
+        cb_string_map_put(map, k, v);
+    }
+    int all_present = 1;
+    for (int i = 0; i < 50; i++) {
+        snprintf(k, sizeof(k), "key-%d", i);
+        snprintf(v, sizeof(v), "val-%d", i);
+        cb_string_map_get(map, k, &val);
+        if (!val || strcmp(val, v) != 0) { all_present = 0; break; }
+    }
+    TEST("rehash preserves all keys", all_present == 1);
+
+    /* rehash after tombstones */
+    cb_string_map_clear(map);
+    for (int i = 0; i < 12; i++) {
+        snprintf(k, sizeof(k), "k%d", i);
+        snprintf(v, sizeof(v), "v%d", i);
+        cb_string_map_put(map, k, v);
+    }
+    /* Remove several to create tombstones */
+    cb_string_map_remove(map, "k1");
+    cb_string_map_remove(map, "k3");
+    cb_string_map_remove(map, "k5");
+    /* Add more to trigger rehash */
+    for (int i = 12; i < 20; i++) {
+        snprintf(k, sizeof(k), "k%d", i);
+        snprintf(v, sizeof(v), "v%d", i);
+        cb_string_map_put(map, k, v);
+    }
+    int after_rehash = 1;
+    for (int i = 0; i < 20; i++) {
+        if (i == 1 || i == 3 || i == 5) continue; /* removed */
+        snprintf(k, sizeof(k), "k%d", i);
+        snprintf(v, sizeof(v), "v%d", i);
+        cb_string_map_get(map, k, &val);
+        if (!val || strcmp(val, v) != 0) { after_rehash = 0; break; }
+    }
+    TEST("rehash after tombstones ok", after_rehash == 1);
+
+    /* overwrite after rehash */
+    cb_string_map_put(map, "k0", "new0");
+    cb_string_map_get(map, "k0", &val);
+    TEST("overwrite after rehash", val && strcmp(val, "new0") == 0);
+
+    /* remove after rehash */
+    cb_string_map_remove(map, "k0");
+    cb_string_map_contains(map, "k0", &c);
+    TEST("remove after rehash", c == 0);
+
+    /* many inserts then many gets */
+    CB_StringMap *big = NULL;
+    cb_string_map_create(0, &big);
+    ok = 1;
+    for (int i = 0; i < 500; i++) {
+        snprintf(k, sizeof(k), "big-%d", i);
+        snprintf(v, sizeof(v), "value-%d", i);
+        if (cb_string_map_put(big, k, v) != CB_OK) { ok = 0; break; }
+    }
+    TEST("500 inserts ok", ok == 1);
+    int get_ok = 1;
+    for (int i = 0; i < 500; i++) {
+        snprintf(k, sizeof(k), "big-%d", i);
+        snprintf(v, sizeof(v), "value-%d", i);
+        cb_string_map_get(big, k, &val);
+        if (!val || strcmp(val, v) != 0) { get_ok = 0; break; }
+    }
+    TEST("500 gets ok", get_ok == 1);
+    cb_string_map_destroy(big);
 
     /* NULL safety */
     TEST("put NULL key error", cb_string_map_put(map, NULL, "x") == CB_ERR_INVALID_ARGUMENT);
