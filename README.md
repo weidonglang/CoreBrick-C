@@ -4,20 +4,8 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 
 ## Features
 
-### v0.4.0 CMake Install & API Policy
-
-- **Version Header** — `corebrick_version.h` for compile-time version checking
-- **API Policy** — documented [API/ABI stability policy](./docs/api_policy.md)
-- **CMake Install** — `cmake --install` support with `find_package` config
-- **Install Guide** — [docs/install.md](./docs/install.md)
-- See [Release Notes](./docs/release_notes.md) for details
-
-### v0.3.3 Reliability Patch
-- Restored version scripts and edge case tests
-- Fixed CI Windows ctest configuration
-- See [Release Notes](./docs/release_notes.md) for details
-
 ### v0.3.1 Reliability Patch
+
 - 15 reliability fixes across all modules
   - StringMap: portable strdup, rehash safety
   - Arena: alignment, overflow checks
@@ -34,8 +22,6 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 - **RingBuffer** - Fixed-capacity FIFO ring buffer
 - **Bloom Filter** - Probabilistic set membership filter
 - **StringMap** - String-to-string hash table with open addressing
-
-
 - **Vector** - Generic dynamic array
 - **Hash** - Non-cryptographic hash utilities (FNV-1a, CRC-32)
 - **FileUtils** - File read/write/size/exists utilities
