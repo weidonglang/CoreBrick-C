@@ -89,6 +89,7 @@ void test_bloom(void) {
     cb_bloom_add(&b2, "x", 1);
     cb_bloom_might_contain(&b2, "", 0, &maybe);
     /* With a fresh filter, empty key was not added, so bits for it are 0 */
+    TEST("contains empty key before add false", maybe == 0);
     cb_bloom_free(&b2);
 
     /* small bitset works */
