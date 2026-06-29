@@ -88,6 +88,15 @@ void test_file(void) {
     TEST("path with spaces exists", space_exists == 1);
     remove(space_path);
 
+    /* read_all empty file */
+    /* Write empty file and read it back */
+    cb_file_write_all(TEST_FILE, "", 0);
+    cb_buffer_free(&buf); /* ensure clean */
+    memset(&buf, 0, sizeof(buf));
+    TEST("read_all empty file ok", cb_file_read_all(TEST_FILE, &buf) == CB_OK);
+    TEST("read_all empty file size=0", buf.size == 0);
+    cb_buffer_free(&buf);
+
     /* Clean up */
     remove(TEST_FILE);
 }
