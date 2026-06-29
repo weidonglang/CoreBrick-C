@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.3.0
-- Latest tag: v0.3.0
+- Latest release: v0.4.1
+- Latest tag: v0.4.1
 
 ## v0.1.0 Task Traceability
 
@@ -64,8 +64,27 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | | Task 2 | Allocation Safety | #50 | #50 | task-2-fix-allocation-safety | d4355f2 | MERGED |
 | | Task 3 | FileUtils | #51 | #51 | task-3-fix-file-utils | 1032012 | MERGED |
 | | Task 4 | Bloom/StringView | #52 | #53 | task-4-fix-edge-semantics | 388aa08 | MERGED |
-| | Task 5 | Hash/CMake | | | task-5-fix-hash-cmake | | IN PROGRESS |
-| | Task 6 | Release | | | task-6-release-v0.3.1 | | PENDING |
+| | Task 5 | Hash/CMake | #54 | #55 | task-5-fix-hash-cmake | 7eebbb1 | MERGED |
+| | Task 6 | Release | #60 | #60 | task-6-release-v0.3.1 | 4b651d2 | MERGED |
+
+## v0.4.0 Task Traceability
+
+| Task | Module | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| | Task 1 | Timer Overflow Fix | #56 | #56 | task-1-fix-timer-overflow | TBD | MERGED |
+| | Task 2 | Install+CI+API Policy | #57 | #57 | task-2-version-api-policy | TBD | MERGED |
+| | Task 3 | Embed Minimal Project | #58 | #58 | task-3-minimal-example | TBD | MERGED |
+| | Task 4 | CI Install Validation | #59 | #59 | task-4-add-ci-install-validation | TBD | MERGED |
+| | Task 5 | Restore CI Scripts | #60 | #60 | task-1-restore-ci-scripts | TBD | MERGED |
+| | Task 6 | Release | #61 | #61 | task-6-release-v0.4.0 | TBD | MERGED |
+
+## v0.4.1 Task Traceability
+
+| Task | Module | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| | Task 1 | Fix CMake Target Name | #38 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
+| | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
+| | Task 3 | Release | #60 | #60 | task-6-release-v0.4.1 | TBD-after-merge | PENDING |
 
 ## Release (v0.3.0)
 
