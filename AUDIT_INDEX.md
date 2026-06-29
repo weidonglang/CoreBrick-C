@@ -4,8 +4,8 @@
 
 - Repository: https://github.com/weidonglang/CoreBrick-C
 - Default branch: main
-- Latest release: v0.3.0
-- Latest tag: v0.3.0
+- Latest release: v0.3.1
+- Latest tag: v0.3.1
 
 ## v0.1.0 Task Traceability
 
@@ -64,10 +64,10 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | | Task 2 | Allocation Safety | #50 | #50 | task-2-fix-allocation-safety | d4355f2 | MERGED |
 | | Task 3 | FileUtils | #51 | #51 | task-3-fix-file-utils | 1032012 | MERGED |
 | | Task 4 | Bloom/StringView | #52 | #53 | task-4-fix-edge-semantics | 388aa08 | MERGED |
-| | Task 5 | Hash/CMake | | | task-5-fix-hash-cmake | | IN PROGRESS |
-| | Task 6 | Release | | | task-6-release-v0.3.1 | | PENDING |
+| | Task 5 | Hash/CMake | #54 | #55 | task-5-fix-hash-cmake | 0ad4de5 | MERGED |
+| | Task 6 | Release | #57 | #56 | task-6-release-v0.3.1 | acbef03 | MERGED |
 
-## Release (v0.3.0)
+## Release (v0.3.1)
 
-- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.0
-- Release asset: CoreBrick-C-v0.3.0.zip
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.3.1
+- Release asset: CoreBrick-C-v0.3.1.zip
