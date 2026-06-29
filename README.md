@@ -76,7 +76,7 @@ Add to your `CMakeLists.txt`:
 
 ```cmake
 find_package(CoreBrick CONFIG REQUIRED)
-target_link_libraries(my_app PRIVATE CoreBrick::corebrick_static)
+target_link_libraries(my_app PRIVATE CoreBrick::corebrick)
 ```
 
 Then configure with the install prefix:
