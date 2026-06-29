@@ -1,8 +1,16 @@
 # CoreBrick-C
 
-A lightweight C11 core utility library with arena allocator, byte buffer, and string view modules.
+CoreBrick-C is a lightweight C11 core utility library with memory, buffer, string, container, hash, file, timer, bitset, ring buffer, bloom filter, string map, benchmark, and CMake package integration support.
 
 ## Features
+
+### v0.4.2 Packaging & Audit Cleanup Patch
+
+- Aligns VERSION, CMake project version, and corebrick_version.h
+- Improves release source package contents
+- Hardens install_test scripts for Windows and Ubuntu
+- Clarifies v0.4.1 as an integration audit patch
+- Keeps `CoreBrick::corebrick` as the public CMake target
 
 ### v0.4.0 CMake Install & API Policy
 
@@ -34,7 +42,6 @@ A lightweight C11 core utility library with arena allocator, byte buffer, and st
 - **RingBuffer** - Fixed-capacity FIFO ring buffer
 - **Bloom Filter** - Probabilistic set membership filter
 - **StringMap** - String-to-string hash table with open addressing
-
 
 - **Vector** - Generic dynamic array
 - **Hash** - Non-cryptographic hash utilities (FNV-1a, CRC-32)
