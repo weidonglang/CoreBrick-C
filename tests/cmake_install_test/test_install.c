@@ -5,11 +5,11 @@
  * to verify the installed CMake config works correctly.
  *
  * Compile manually after `cmake --install`:
- *   gcc -o test_install test_install.c -I<install_prefix>/include -L<install_prefix>/lib -lcorebrick_static
+ *   gcc -o test_install test_install.c -I<install_prefix>/include -L<install_prefix>/lib -lcorebrick
  *
  * Or via CMake:
  *   find_package(CoreBrick CONFIG REQUIRED)
- *   target_link_libraries(myapp PRIVATE CoreBrick::corebrick_static)
+ *   target_link_libraries(myapp PRIVATE CoreBrick::corebrick)
  */
 
 #include <stdio.h>
