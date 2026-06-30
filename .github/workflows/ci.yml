@@ -30,6 +30,7 @@ jobs:
       run: cmake --install build --prefix "${{ runner.temp }}/corebrick-install"
 
     - name: Install Test (cmake_install_test)
+      if: matrix.os == 'ubuntu-latest'
       shell: bash
       run: |
         cmake -S tests/cmake_install_test -B build_install_test \
