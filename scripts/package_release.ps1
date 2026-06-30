@@ -14,17 +14,22 @@ New-Item -ItemType Directory -Path $distDir -Force | Out-Null
 
 # Create archive directory structure
 $archiveDir = Join-Path $distDir $packageName
+New-Item -ItemType Directory -Path (Join-Path $archiveDir "cmake") -Force | Out-Null
 New-Item -ItemType Directory -Path (Join-Path $archiveDir "include") -Force | Out-Null
 New-Item -ItemType Directory -Path (Join-Path $archiveDir "docs") -Force | Out-Null
 New-Item -ItemType Directory -Path (Join-Path $archiveDir "examples") -Force | Out-Null
+New-Item -ItemType Directory -Path (Join-Path $archiveDir "scripts") -Force | Out-Null
 
 # Copy files
+Copy-Item (Join-Path $rootDir "CMakeLists.txt") $archiveDir
 Copy-Item (Join-Path $rootDir "README.md") $archiveDir
 Copy-Item (Join-Path $rootDir "LICENSE") $archiveDir
 Copy-Item (Join-Path $rootDir "VERSION") $archiveDir
+Copy-Item (Join-Path $rootDir "cmake\*") (Join-Path $archiveDir "cmake\")
 Copy-Item (Join-Path $rootDir "include\*") (Join-Path $archiveDir "include\")
 Copy-Item (Join-Path $rootDir "docs\*") (Join-Path $archiveDir "docs\")
 Copy-Item (Join-Path $rootDir "examples\*") (Join-Path $archiveDir "examples\")
+Copy-Item (Join-Path $rootDir "scripts\*") (Join-Path $archiveDir "scripts\")
 
 # Create zip
 $zipPath = Join-Path $distDir "$packageName.zip"
