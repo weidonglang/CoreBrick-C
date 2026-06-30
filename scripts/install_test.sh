@@ -34,16 +34,14 @@ REQUIRED_PATHS=(
     "include/corebrick_version.h"
 )
 
-if [ -d "$INSTALL_ROOT/share/cmake" ]; then
-    REQUIRED_PATHS+=("share/cmake/CoreBrick/CoreBrickConfig.cmake")
-    REQUIRED_PATHS+=("share/cmake/CoreBrick/CoreBrickConfigVersion.cmake")
-    REQUIRED_PATHS+=("share/cmake/CoreBrick/CoreBrickTargets.cmake")
+# cmake config files are installed to share/cmake/ on Ubuntu and lib/cmake/ on Windows
+CMAKE_DIR="share/cmake/CoreBrick"
+if [ ! -f "$INSTALL_ROOT/$CMAKE_DIR/CoreBrickConfig.cmake" ]; then
+    CMAKE_DIR="lib/cmake/CoreBrick"
 fi
-if [ -d "$INSTALL_ROOT/lib/cmake" ]; then
-    REQUIRED_PATHS+=("lib/cmake/CoreBrick/CoreBrickConfig.cmake")
-    REQUIRED_PATHS+=("lib/cmake/CoreBrick/CoreBrickConfigVersion.cmake")
-    REQUIRED_PATHS+=("lib/cmake/CoreBrick/CoreBrickTargets.cmake")
-fi
+REQUIRED_PATHS+=("$CMAKE_DIR/CoreBrickConfig.cmake")
+REQUIRED_PATHS+=("$CMAKE_DIR/CoreBrickConfigVersion.cmake")
+REQUIRED_PATHS+=("$CMAKE_DIR/CoreBrickTargets.cmake")
 
 for rel_path in "${REQUIRED_PATHS[@]}"; do
     full_path="$INSTALL_ROOT/$rel_path"
