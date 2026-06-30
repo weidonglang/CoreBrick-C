@@ -48,4 +48,4 @@ This patch release source package contents, hardens install_test for Windows and
 | | Task 3 | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
 | | Task 4 | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
 | | Task 5 | #70 | #71 | task-5-cleanup-audit | 80b057d | MERGED |
-| | Task 6 | #72 | TBD | task-6-release-v0.4.2 | TBD | PENDING |
+| | Task 6 | #72 | #73 | task-6-release-v0.4.2 | 8cec92d | MERGED |
