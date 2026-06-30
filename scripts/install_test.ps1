@@ -43,16 +43,17 @@ if ($InstallPrefix -eq "") {
 Write-Host "Verifying install layout..." -ForegroundColor Yellow
 $requiredPaths = @(
     "include/corebrick.h",
-    "include/corebrick_version.h",
-    "share/cmake/CoreBrick/CoreBrickConfig.cmake",
-    "share/cmake/CoreBrick/CoreBrickConfigVersion.cmake",
-    "share/cmake/CoreBrick/CoreBrickTargets.cmake"
+    "include/corebrick_version.h"
 )
-if (Test-Path "$installRoot/lib") {
-    $requiredPaths += "lib/cmake/CoreBrick/CoreBrickConfig.cmake"
-    $requiredPaths += "lib/cmake/CoreBrick/CoreBrickConfigVersion.cmake"
-    $requiredPaths += "lib/cmake/CoreBrick/CoreBrickTargets.cmake"
+
+# cmake config files are installed to share/cmake/ on Ubuntu and lib/cmake/ on Windows
+$cmakeDir = "share/cmake/CoreBrick"
+if (-not (Test-Path (Join-Path $installRoot $cmakeDir "CoreBrickConfig.cmake"))) {
+    $cmakeDir = "lib/cmake/CoreBrick"
 }
+$requiredPaths += "$cmakeDir/CoreBrickConfig.cmake"
+$requiredPaths += "$cmakeDir/CoreBrickConfigVersion.cmake"
+$requiredPaths += "$cmakeDir/CoreBrickTargets.cmake"
 
 foreach ($relPath in $requiredPaths) {
     $fullPath = Join-Path $installRoot $relPath
