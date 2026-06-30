@@ -94,8 +94,18 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | | | Task 2 | Source Package | #64 | #65 | task-2-source-release-package | 5267a5a | MERGED |
 | | | Task 3 | Install Test | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
 | | | Task 4 | CI Install Test | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
-| | | Task 5 | Audit Cleanup | #70 | TBD | task-5-cleanup-audit | TBD-after-merge | PENDING |
-| | | Task 6 | Release | TBD | TBD | task-6-release-v0.4.2 | TBD-after-merge | PENDING |
+| | | Task 5 | Audit Cleanup | #70 | #71 | task-5-cleanup-audit | 80b057d | MERGED |
+| | | Task 6 | Release | #72 | TBD | task-6-release-v0.4.2 | TBD-after-merge | PENDING |
+
+## Release (v0.4.2)
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.4.2
+- Release asset: CoreBrick-C-v0.4.2.zip
+
+## Release (v0.4.1)
+
+- Release URL: https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.4.1
+- Release asset: CoreBrick-C-v0.4.1.zip
 
 ## Release (v0.3.0)
 
