@@ -95,7 +95,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | | | Task 3 | Install Test | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
 | | | Task 4 | CI Install Test | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
 | | | Task 5 | Audit Cleanup | #70 | #71 | task-5-cleanup-audit | 80b057d | MERGED |
-| | | Task 6 | Release | #72 | TBD | task-6-release-v0.4.2 | TBD-after-merge | PENDING |
+| | | Task 6 | Release | #72 | #73 | task-6-release-v0.4.2 | db1dd62 | MERGED |
 
 ## Release (v0.4.2)
 
