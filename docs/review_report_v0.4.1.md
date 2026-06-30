@@ -1,4 +1,3 @@
-# CoreBrick-C v0.4.1 Review Report
 
 ## Summary
 
@@ -27,6 +26,6 @@ This patch release fixes the exported CMake target name to match `find_package` 
 
 | Task | Issue | PR | Branch | Commit | Status |
 |---|---|---|---|---|---|
-| | Task 1 | #38 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
+| | Task 1 | #46 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
 | | Task 2 | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
 | | Task 3 | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
