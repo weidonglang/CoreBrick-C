@@ -21,13 +21,13 @@ jobs:
       run: cmake -S . -B build ${{ matrix.os == 'windows-latest' && '-A x64' || '' }}
 
     - name: Build
-      run: cmake --build build --config Debug
+      run: cmake --build build ${{ matrix.os == 'windows-latest' && '--config Debug' || '' }}
 
     - name: Test
       run: ctest --test-dir build -C Debug --output-on-failure
 
     - name: Install
-      run: cmake --install build --config Debug --prefix "${{ runner.temp }}/corebrick-install"
+      run: cmake --install build ${{ matrix.os == 'windows-latest' && '--config Debug' || '' }} --prefix "${{ runner.temp }}/corebrick-install"
 
     - name: Install Test (cmake_install_test)
       if: matrix.os == 'ubuntu-latest'
