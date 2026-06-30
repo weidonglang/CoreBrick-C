@@ -48,7 +48,7 @@ $requiredPaths = @(
 
 # cmake config files are installed to share/cmake/ on Ubuntu and lib/cmake/ on Windows
 $cmakeDir = "share/cmake/CoreBrick"
-if (-not (Test-Path (Join-Path $installRoot $cmakeDir "CoreBrickConfig.cmake"))) {
+if (-not (Test-Path (Join-Path (Join-Path $installRoot $cmakeDir) "CoreBrickConfig.cmake"))) {
     $cmakeDir = "lib/cmake/CoreBrick"
 }
 $requiredPaths += "$cmakeDir/CoreBrickConfig.cmake"
