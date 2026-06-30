@@ -65,7 +65,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 | | Task 3 | FileUtils | #51 | #51 | task-3-fix-file-utils | 1032012 | MERGED |
 | | Task 4 | Bloom/StringView | #52 | #53 | task-4-fix-edge-semantics | 388aa08 | MERGED |
 | | Task 5 | Hash/CMake | #54 | #55 | task-5-fix-hash-cmake | 7eebbb1 | MERGED |
-| | Task 6 | Release | #60 | #60 | task-6-release-v0.3.1 | 4b651d2 | MERGED |
+| | Task 6 | Release | #60 | #60 | task-6-release-v0.3.1 | 5d8aaf4 | MERGED |
 
 ## v0.4.0 Task Traceability
 
@@ -90,11 +90,11 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
 |---|---|---|---|---|---|---|---|
-| | | Task 1 | Version Docs | TBD | TBD | task-1-align-version-docs-v0.4.2 | TBD-after-merge | PENDING |
-| | | Task 2 | Source Package | TBD | TBD | task-2-source-release-package | TBD-after-merge | PENDING |
-| | | Task 3 | Install Test | TBD | TBD | task-3-harden-install-test | TBD-after-merge | PENDING |
-| | | Task 4 | CI Install Test | TBD | TBD | task-4-fix-ci-install-test | TBD-after-merge | PENDING |
-| | | Task 5 | Audit Cleanup | TBD | TBD | task-5-clean-audit-records | TBD-after-merge | PENDING |
+| | | Task 1 | Version Docs | #62 | #63 | task-1-align-version-docs-v0.4.2 | f204e0c | MERGED |
+| | | Task 2 | Source Package | #64 | #65 | task-2-source-release-package | 5267a5a | MERGED |
+| | | Task 3 | Install Test | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
+| | | Task 4 | CI Install Test | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
+| | | Task 5 | Audit Cleanup | #70 | TBD | task-5-cleanup-audit | TBD-after-merge | PENDING |
 | | | Task 6 | Release | TBD | TBD | task-6-release-v0.4.2 | TBD-after-merge | PENDING |
 
 ## Release (v0.3.0)
