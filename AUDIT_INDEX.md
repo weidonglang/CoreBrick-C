@@ -10,7 +10,7 @@
 ## v0.1.0 Task Traceability
 
 | Task | Module | Commit | Main Files | Tests | Docs | Status |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | | Task 0 | Bootstrap | 5fd5b89 | CMakeLists.txt, README.md | tests/test_main.c | docs/architecture.md | PASS |
 | | Task 1 | Arena | 5fd5b89 | include/cb_arena.h, src/cb_arena.c | tests/test_arena.c | docs/arena.md | PASS |
 | | Task 2 | ByteBuffer | 5fd5b89 | include/cb_buffer.h, src/cb_buffer.c | tests/test_buffer.c | docs/buffer.md | PASS |
@@ -20,7 +20,7 @@
 ## v0.2.0 Task Traceability
 
 | Task | Module | Branch | Commit | Main Files | Tests | Docs | Status |
-|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | | Task 1 | Vector | task-1-vector | f8215ee | include/cb_vector.h, src/cb_vector.c | tests/test_vector.c | docs/vector.md | PASS |
 | | Task 2 | Hash | task-2-hash | 16555ab | include/cb_hash.h, src/cb_hash.c | tests/test_hash.c | docs/hash.md | PASS |
 | | Task 3 | FileUtils | task-3-file-utils | 19bf3d2 | include/cb_file.h, src/cb_file.c | tests/test_file.c | docs/file.md | PASS |
@@ -41,7 +41,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ## v0.3.0 Task Traceability
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | | Task 0 | PR Audit Guard | #1 | #2 | task-0-pr-audit-guard | 58a567a | MERGED |
 | | Task 1 | BitSet | #3 | #4 | task-1-bitset | 3aaa0b0 | MERGED |
 | | Task 2 | RingBuffer | #5 | #6 | task-2-ring-buffer | 2740fd4 | MERGED |
@@ -81,21 +81,27 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 ## v0.4.1 Task Traceability
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
-|---|---|---|---|---|---|---|---|
-| | | Task 1 | Fix CMake Target Name | #46 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
-| | | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
-| | | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
+|---|---|---|---|---|---|---|
+| | Task 1 | Fix CMake Target Name | #46 | #58 | task-1-fix-cmake-target | 65a9804 | MERGED |
+| | Task 2 | Fix Install Test Target | #38 | #59 | task-2-fix-install-test-target | a8cfe72 | MERGED |
+| | Task 3 | Release | #60 | #61 | task-6-release-v0.4.1 | 205ac9c | MERGED |
 
 ## v0.4.2 Task Traceability
 
 | Task | Module | Issue | PR | Branch | Commit | Status |
-|---|---|---|---|---|---|---|---|
-| | | Task 1 | Version Docs | #62 | #63 | task-1-align-version-docs-v0.4.2 | f204e0c | MERGED |
-| | | Task 2 | Source Package | #64 | #65 | task-2-source-release-package | 5267a5a | MERGED |
-| | | Task 3 | Install Test | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
-| | | Task 4 | CI Install Test | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
-| | | Task 5 | Audit Cleanup | #70 | #71 | task-5-cleanup-audit | 80b057d | MERGED |
-| | | Task 6 | Release | #72 | #73 | task-6-release-v0.4.2 | db1dd62 | MERGED |
+|---|---|---|---|---|---|---|
+| | Task 1 | Version Docs | #62 | #63 | task-1-align-version-docs-v0.4.2 | f204e0c | MERGED |
+| | Task 2 | Source Package | #64 | #65 | task-2-source-release-package | 5267a5a | MERGED |
+| | Task 3 | Install Test | #66 | #67 | task-3-harden-install-test | 2e6dac0 | MERGED |
+| | Task 4 | CI Install Test | #68 | #69 | task-4-fix-ci-install-test | adb4823 | MERGED |
+| | Task 5 | Audit Cleanup | #70 | #71 | task-5-cleanup-audit | 80b057d | MERGED |
+| | Task 6 | Release | #72 | #73 | task-6-release-v0.4.2 | db1dd62 | MERGED |
+
+## v0.4.3 Task Traceability
+
+| Task | Scope | Issue | PR | Branch | Commit | Status |
+|---|---|---|---|---|---|---|
+| | Task 1 | README hero | | | task-1-readme-hero | | |
 
 ## Release (v0.4.2)
 
