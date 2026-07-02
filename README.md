@@ -178,6 +178,10 @@ CoreBrick-C/
   cli/        - Command-line tool
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development workflow, coding standards, and pull request process.
+
 ## License
 
 MIT
