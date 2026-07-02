@@ -6,6 +6,22 @@ A lightweight C11 core utility library with memory, buffer, string, container, h
 
 CoreBrick-C is designed as a small, readable, dependency-light C utility library for learning, embedding, and small native tooling projects. It provides practical building blocks commonly needed in C applications — from arena allocation and dynamic buffers to hash maps, bloom filters, and cross-platform timers — without requiring heavyweight dependencies or complex build systems.
 
+### Who Is This For?
+
+- **C learners** who want to study clean, well-documented C11 code with consistent error handling
+- **Embedded developers** who need a small, portable utility library with no dynamic dependencies
+- **Tool builders** who want practical data structures (arena, vector, string map, bloom filter) without pulling in large frameworks
+- **Project reference** for developers looking for a well-structured CMake-based C project with CI, testing, packaging, and install support
+
+### What Makes CoreBrick-C Different?
+
+- **Zero external runtime dependencies** — no libuv, no GLib, no pthreads required
+- **Simple ownership model** — single-thread oriented with clear allocation semantics
+- **Comprehensive error handling** — every allocation failure propagates as an error code, not a crash
+- **Cross-platform by design** — Windows (MSVC) and Ubuntu (GCC) CI-tested on every commit
+- **CMake package ready** — `find_package(CoreBrick CONFIG REQUIRED)` for integration
+- **Audit traceability** — every release has documented Issue/PR/Commit correspondence
+
 ## Current Status
 
 - **Current clean release**: [v0.4.2](https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.4.2)
