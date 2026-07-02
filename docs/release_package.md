@@ -121,7 +121,24 @@ gh release view "v$version" --json assets
 
 ## Full Release Script
 
-For convenience, here is a combined script that runs all steps:
+For convenience, a unified validation script runs all pre-release checks in one command:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/validate_all.ps1
+```
+
+This runs the following steps in sequence:
+
+1. Version consistency (VERSION vs CMakeLists.txt)
+2. Clean CMake configure
+3. CMake build
+4. CTest (all unit tests)
+5. Smoke test
+6. Artifact check (`build/`, `dist/`, `*.exe`, etc.)
+7. Release build
+8. Release packaging
+
+Or equivalently, step-by-step:
 
 ```powershell
 # run_full_release.ps1 — WARNING: destructive, removes build/
