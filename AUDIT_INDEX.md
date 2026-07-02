@@ -101,7 +101,8 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke_test.ps1
 
 | Task | Scope | Issue | PR | Branch | Commit | Status |
 |---|---|---|---|---|---|---|
-| | Task 1 | README hero | | | task-1-readme-hero | | |
+| | Task 1 | README hero | #74 | #75 | task-1-readme-hero | bf72a09 | MERGED |
+| | Task 2 | Module capability matrix | | | task-2-module-capability-matrix | | |
 
 ## Release (v0.4.2)
 
