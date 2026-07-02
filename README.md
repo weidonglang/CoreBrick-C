@@ -1,6 +1,24 @@
 # CoreBrick-C
 
-CoreBrick-C is a lightweight C11 core utility library with memory, buffer, string, container, hash, file, timer, bitset, ring buffer, bloom filter, string map, benchmark, and CMake package integration support.
+A lightweight C11 core utility library with memory, buffer, string, container, hash, file, timer, bitset, ring buffer, bloom filter, string map, benchmark, and CMake package integration support.
+
+## Why CoreBrick-C?
+
+CoreBrick-C is designed as a small, readable, dependency-light C utility library for learning, embedding, and small native tooling projects. It provides practical building blocks commonly needed in C applications — from arena allocation and dynamic buffers to hash maps, bloom filters, and cross-platform timers — without requiring heavyweight dependencies or complex build systems.
+
+## Current Status
+
+- **Current clean release**: [v0.4.2](https://github.com/weidonglang/CoreBrick-C/releases/tag/v0.4.2)
+- **Language**: C11 (ISO/IEC 9899:2011)
+- **Build**: CMake 3.16+
+- **Package usage**: `find_package(CoreBrick CONFIG REQUIRED)`
+- **CI**: Windows (MSVC) + Ubuntu (GCC)
+- **License**: [MIT](./LICENSE)
+- **Repository**: [github.com/weidonglang/CoreBrick-C](https://github.com/weidonglang/CoreBrick-C)
+
+[![CI Windows](https://github.com/weidonglang/CoreBrick-C/actions/workflows/ci.yml/badge.svg)](https://github.com/weidonglang/CoreBrick-C/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/weidonglang/CoreBrick-C?label=release)](https://github.com/weidonglang/CoreBrick-C/releases)
+[![License](https://img.shields.io/github/license/weidonglang/CoreBrick-C)](https://github.com/weidonglang/CoreBrick-C/blob/main/LICENSE)
 
 ## Features
 
@@ -53,6 +71,20 @@ CoreBrick-C is a lightweight C11 core utility library with memory, buffer, strin
 - **Arena** - Linear memory allocator for fast, scoped allocations
 - **ByteBuffer** - Dynamic byte buffer with automatic growth
 - **StringView** - Zero-copy string slice with parsing utilities
+
+## When to Use CoreBrick-C
+
+- You need a small, self-contained C utility library for a personal or embedded project.
+- You want readable, well-documented C code that you can learn from and modify.
+- You need practical building blocks (arena, buffer, string view, hash, file, timer, bloom filter, etc.) without adding heavy dependencies.
+- You want a project with proper CMake packaging and CI that you can use as a reference for your own C projects.
+
+## When Not to Use CoreBrick-C
+
+- You need a production-grade replacement for GLib, uthash, xxHash, zlib, or SQLite.
+- You need cryptographic-grade hash functions (CoreBrick-C uses FNV-1a and CRC32, which are **not** secure).
+- You need multithreaded data structures or thread-safe containers (current version is single-thread oriented).
+- You need a large ecosystem with bindings to multiple languages.
 
 ## Quick Start
 
